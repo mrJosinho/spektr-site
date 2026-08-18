@@ -339,12 +339,12 @@ img {
 }
 
 .route-joueurs {
-  background-image: url("assets/banner-mix.png");
+  background-image: url("assets/banner-mix.jpg");
   background-position: 12% center;
 }
 
 .route-calendrier {
-  background-image: url("assets/banner-filles.png");
+  background-image: url("assets/banner-filles.jpg");
   background-position: 16% center;
 }
 
