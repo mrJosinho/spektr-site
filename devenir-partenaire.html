@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Partenaires - Spektr</title>
-    <meta name="description" content="Partenaires officiels Spektr.">
+    <title>Devenir partenaire - Spektr</title>
+    <meta name="description" content="Contact partenariat Spektr.">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -21,25 +21,42 @@
     <main>
       <section class="page-hero page-hero-short">
         <img src="assets/outro-twitch.jpg" alt="Banniere partenaires Spektr">
-        <div><p class="eyebrow">Club</p><h1>Partenaires</h1></div>
+        <div><p class="eyebrow">Partenariat</p><h1>Devenir partenaire</h1></div>
       </section>
-      <section class="partners-page">
-        <div class="section-title"><p class="eyebrow">Partenaires officiels</p><h2>Ils accompagnent la structure.</h2></div>
-        <div class="partners-grid">
-          <a class="partner-card partner-card-dark" href="https://upzone.gg/" target="_blank" rel="noreferrer" aria-label="Visiter UpZone">
-            <img src="assets/sponsor-upzone.png" alt="UpZone">
-            <span>Performance</span>
-          </a>
-          <a class="partner-card partner-card-light" href="https://www.ecohabitat76.fr/" target="_blank" rel="noreferrer" aria-label="Visiter eco habitat">
-            <img src="assets/sponsor-ecohabitat.png" alt="eco'habitat">
-            <span>Partenaire habitat</span>
-          </a>
+
+      <section class="partner-contact-page">
+        <div class="partner-contact-copy">
+          <p class="eyebrow">Prise de contact</p>
+          <h2>Construisons une operation visible, utile et credible.</h2>
+          <p>Remplissez les informations essentielles. Le message sera transmis directement a l'equipe Spektr.</p>
         </div>
-        <div class="partners-join">
-          <p class="eyebrow">Collaboration</p>
-          <h2>Associer votre marque a Spektr.</h2>
-          <a class="partner-join-button" href="devenir-partenaire.html">Devenir partenaire <span aria-hidden="true">&rarr;</span></a>
-        </div>
+
+        <form class="partner-form" action="https://formsubmit.co/joseph.lucchini@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Demande de partenariat Spektr">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="box">
+          <label>
+            <span>Nom / Prenom</span>
+            <input type="text" name="Nom" autocomplete="name" required>
+          </label>
+          <label>
+            <span>Marque / Societe</span>
+            <input type="text" name="Marque" autocomplete="organization" required>
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="Email" autocomplete="email" required>
+          </label>
+          <label>
+            <span>Site internet</span>
+            <input type="url" name="Site" autocomplete="url" placeholder="https://">
+          </label>
+          <label class="full">
+            <span>Objectif du partenariat</span>
+            <textarea name="Message" rows="7" required></textarea>
+          </label>
+          <button class="partner-submit" type="submit">Envoyer <span aria-hidden="true">&rarr;</span></button>
+        </form>
       </section>
     </main>
 
