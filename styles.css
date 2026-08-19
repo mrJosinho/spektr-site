@@ -359,12 +359,12 @@ img {
 }
 
 .route-joueurs {
-  background-image: url("assets/banner-mix.jpg");
+  background-image: url("assets/banner-mix.png");
   background-position: 12% center;
 }
 
 .route-calendrier {
-  background-image: url("assets/banner-filles.jpg");
+  background-image: url("assets/banner-filles.png");
   background-position: 16% center;
 }
 
@@ -1640,37 +1640,65 @@ img {
 }
 
 .site-footer {
-  min-height: 145px;
-  padding: 35px 32px;
+  min-height: 245px;
+  padding: 50px clamp(24px, 4vw, 58px);
   background: var(--black);
   border-top: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: minmax(180px, 1.2fr) minmax(210px, .9fr) minmax(190px, .6fr);
+  align-items: start;
+  gap: clamp(32px, 7vw, 120px);
 }
 
 .footer-brand {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 14px;
   color: var(--white);
-  font-size: 22px;
   text-transform: uppercase;
+}
+
+.footer-brand strong {
+  display: block;
+  font-size: clamp(28px, 3.2vw, 54px);
+  line-height: .9;
+}
+
+.footer-brand span,
+.footer-socials span {
+  display: block;
+  color: var(--pink);
+  font: 900 13px/1 Arial, sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
 .footer-brand img {
-  width: 42px;
-  height: 42px;
+  width: 52px;
+  height: 52px;
 }
 
-.site-footer nav {
-  display: flex;
-  gap: 24px;
+.footer-links,
+.footer-socials {
+  display: grid;
+  gap: 18px;
   color: rgba(255,255,255,.75);
   font-family: Arial, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 900;
   text-transform: uppercase;
+}
+
+.footer-links a,
+.footer-socials a {
+  width: fit-content;
+  transition: color .2s ease, transform .2s ease;
+}
+
+.footer-links a:hover,
+.footer-socials a:hover {
+  color: var(--pink);
+  transform: translateX(5px);
 }
 
 @media (max-width: 960px) {
@@ -1928,10 +1956,19 @@ img {
     text-align: left;
   }
 
-  .site-footer,
-  .site-footer nav {
-    flex-direction: column;
+  .site-footer {
+    grid-template-columns: 1fr;
     text-align: center;
+    justify-items: center;
+  }
+
+  .footer-brand {
+    align-items: center;
+  }
+
+  .footer-links,
+  .footer-socials {
+    justify-items: center;
   }
 }
 
