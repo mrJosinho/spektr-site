@@ -44,26 +44,19 @@ document.querySelectorAll("[data-player-announcement-modal]").forEach((modal) =>
       return;
     }
 
-    video.volume = 0.5;
+    video.volume = 0.25;
     video.muted = false;
     video.play().catch(() => {
       video.muted = true;
-      video.volume = 0.5;
-      video.play()
-        .then(() => {
-          window.setTimeout(() => {
-            video.volume = 0.5;
-            video.muted = false;
-          }, 300);
-        })
-        .catch(() => {
-          video.controls = true;
-        });
+      video.volume = 0.25;
+      video.play().catch(() => {
+        video.controls = true;
+      });
     });
   }
 
   if (video) {
-    video.volume = 0.5;
+    video.volume = 0.25;
     video.addEventListener("ended", closeAnnouncement);
   }
 
