@@ -16,6 +16,67 @@ mobilePanel.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => setPanel(false));
 });
 
+document.querySelectorAll("[data-player-announcement-modal]").forEach((modal) => {
+  const tweetUrl = modal.dataset.tweetUrl;
+  const closeButtons = modal.querySelectorAll("[data-announcement-close]");
+  const params = new URLSearchParams(window.location.search);
+  const forcePreview = params.has("previewAnnouncement");
+  const storageKey = `spektr-player-announcement:${tweetUrl}`;
+
+  if (!tweetUrl || (!forcePreview && localStorage.getItem(storageKey) === "seen")) {
+    return;
+  }
+
+  function closeAnnouncement() {
+    localStorage.setItem(storageKey, "seen");
+    modal.hidden = true;
+    body.classList.remove("modal-open");
+  }
+
+  function loadXEmbed() {
+    if (window.twttr?.widgets) {
+      window.twttr.widgets.load(modal);
+      return;
+    }
+
+    if (!document.querySelector('script[src="https://platform.twitter.com/widgets.js"]')) {
+      const script = document.createElement("script");
+      script.src = "https://platform.twitter.com/widgets.js";
+      script.async = true;
+      script.charset = "utf-8";
+      script.onload = () => window.twttr?.widgets?.load(modal);
+      document.head.appendChild(script);
+      return;
+    }
+
+    window.twttr?.widgets?.load(modal);
+  }
+
+  function openAnnouncement() {
+    modal.hidden = false;
+    body.classList.add("modal-open");
+    loadXEmbed();
+  }
+
+  openAnnouncement();
+
+  closeButtons.forEach((button) => {
+    button.addEventListener("click", closeAnnouncement);
+  });
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeAnnouncement();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!modal.hidden && event.key === "Escape") {
+      closeAnnouncement();
+    }
+  });
+});
+
 document.querySelectorAll(".roster-grid").forEach((grid) => {
   const cards = Array.from(grid.querySelectorAll(".player-card"));
   const tilePattern = [
