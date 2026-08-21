@@ -165,7 +165,7 @@ img {
 
 .home-hero {
   position: relative;
-  min-height: clamp(360px, 25.5vw, 520px);
+  min-height: max(720px, calc(100svh - var(--header-h) - 28px));
   overflow: hidden;
   background:
     radial-gradient(circle at 78% 34%, rgba(255,79,160,.16), transparent 30%),
@@ -185,8 +185,8 @@ img {
 
 .home-hero::after {
   background:
-    linear-gradient(180deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.06) 50%, rgba(0,0,0,.58) 100%),
-    linear-gradient(90deg, rgba(0,0,0,.36), transparent 58%, rgba(0,0,0,.18));
+    linear-gradient(180deg, rgba(0,0,0,.02) 0%, rgba(0,0,0,.08) 46%, rgba(0,0,0,.66) 100%),
+    linear-gradient(90deg, rgba(0,0,0,.38), transparent 58%, rgba(0,0,0,.16));
 }
 
 .home-hero > img,
@@ -200,16 +200,16 @@ img {
 
 .home-hero > img {
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
   opacity: .98;
 }
 
 .hero-copy {
   position: relative;
   z-index: 1;
-  width: min(1220px, calc(100% - 64px));
+  width: min(1500px, calc(100% - 128px));
   margin: 0 auto;
-  padding: 0 0 clamp(24px, 3.6vw, 58px);
+  padding: 0 0 clamp(54px, 7vw, 118px);
 }
 
 .eyebrow,
@@ -233,7 +233,7 @@ img {
 .page-hero h1 {
   margin: 0;
   color: var(--white);
-  font-size: clamp(64px, 11vw, 152px);
+  font-size: clamp(72px, 12vw, 176px);
   line-height: .82;
   text-transform: uppercase;
 }
@@ -1981,7 +1981,7 @@ img {
   }
 
   .home-hero {
-    min-height: 58vh;
+    min-height: 76vh;
   }
 
   .home-hero > img {
@@ -1998,6 +1998,10 @@ img {
   .hero-copy,
   .page-hero > div {
     width: calc(100% - 32px);
+  }
+
+  .hero-copy {
+    padding-bottom: 42px;
   }
 
   .home-statement,
