@@ -1110,6 +1110,12 @@ img {
   font-size: clamp(48px, 7vw, 112px);
   line-height: .82;
   font-variant-numeric: tabular-nums;
+  transition: color .25s ease, transform .25s ease;
+}
+
+.about-stats strong.is-counting {
+  color: var(--pink);
+  transform: translateY(-4px);
 }
 
 .about-stats span {
