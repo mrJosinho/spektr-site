@@ -155,14 +155,37 @@ document.querySelectorAll(".about-stats").forEach((stats) => {
     }, 2800);
   }
 
+  function setDynamicCounters() {
+    const playerCounter = counters.find((counter) => counter.dataset.countSource === "players");
+
+    if (!playerCounter) {
+      return Promise.resolve();
+    }
+
+    return fetch("joueurs.html")
+      .then((response) => response.text())
+      .then((html) => {
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        const totalPlayers = doc.querySelectorAll(".player-card").length;
+
+        if (totalPlayers > 0) {
+          playerCounter.dataset.countUp = String(totalPlayers);
+        }
+      })
+      .catch(() => {
+        const localTotal = document.querySelectorAll(".player-card").length;
+        playerCounter.dataset.countUp = String(localTotal || 0);
+      });
+  }
+
   if (!("IntersectionObserver" in window)) {
-    animateStats();
+    setDynamicCounters().then(animateStats);
     return;
   }
 
   const observer = new IntersectionObserver((entries) => {
     if (entries.some((entry) => entry.isIntersecting)) {
-      animateStats();
+      setDynamicCounters().then(animateStats);
     }
   }, { threshold: 0.45 });
 
