@@ -1109,6 +1109,7 @@ img {
   color: var(--white);
   font-size: clamp(48px, 7vw, 112px);
   line-height: .82;
+  font-variant-numeric: tabular-nums;
 }
 
 .about-stats span {
