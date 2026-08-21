@@ -1384,6 +1384,18 @@ img {
   color: var(--white);
 }
 
+.announcement-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+}
+
+.announcement-x-button {
+  display: inline-flex;
+  text-decoration: none;
+}
+
 .roster-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
