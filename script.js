@@ -58,6 +58,108 @@ document.querySelectorAll(".roster-grid").forEach((grid) => {
   });
 });
 
+const routePlayerStages = Array.from(document.querySelectorAll("[data-route-random-players]"));
+
+if (routePlayerStages.length) {
+  let routePlayerImages = [];
+  let routePlayerCursor = 0;
+
+  function uniqueRouteImages(images) {
+    return Array.from(new Set(images)).filter((src) => {
+      const normalized = src.toLowerCase();
+      return normalized.includes("player-") && !normalized.includes("anonyme");
+    });
+  }
+
+  function shuffleRouteImages(images) {
+    return images
+      .map((src) => ({ src, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map((item) => item.src);
+  }
+
+  function nextRoutePair() {
+    if (routePlayerImages.length < 2) {
+      return [];
+    }
+
+    if (routePlayerCursor >= routePlayerImages.length - 1) {
+      routePlayerImages = shuffleRouteImages(routePlayerImages);
+      routePlayerCursor = 0;
+    }
+
+    const pair = routePlayerImages.slice(routePlayerCursor, routePlayerCursor + 2);
+    routePlayerCursor += 2;
+
+    if (pair.length < 2) {
+      routePlayerImages = shuffleRouteImages(routePlayerImages);
+      routePlayerCursor = 0;
+      return nextRoutePair();
+    }
+
+    return pair;
+  }
+
+  function renderRouteStage(stage, pair) {
+    if (pair.length < 2 || pair.some((src) => src.toLowerCase().includes("anonyme"))) {
+      return;
+    }
+
+    stage.classList.remove("is-ready");
+
+    setTimeout(() => {
+      stage.replaceChildren(...pair.map((src) => {
+        const image = document.createElement("img");
+        image.src = src;
+        image.alt = "";
+        image.loading = "lazy";
+        return image;
+      }));
+
+      requestAnimationFrame(() => {
+        stage.classList.add("is-ready");
+      });
+    }, 180);
+  }
+
+  function renderRouteStages() {
+    const used = new Set();
+
+    routePlayerStages.forEach((stage) => {
+      let pair = nextRoutePair();
+
+      for (let attempts = 0; attempts < 4 && pair.some((src) => used.has(src)); attempts++) {
+        pair = nextRoutePair();
+      }
+
+      pair.forEach((src) => used.add(src));
+      renderRouteStage(stage, pair);
+    });
+  }
+
+  fetch("joueurs.html")
+    .then((response) => response.text())
+    .then((html) => {
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      routePlayerImages = shuffleRouteImages(uniqueRouteImages(
+        Array.from(doc.querySelectorAll(".player-card img"))
+          .map((image) => image.getAttribute("src"))
+          .filter(Boolean)
+      ));
+      renderRouteStages();
+      setInterval(renderRouteStages, 7200);
+    })
+    .catch(() => {
+      routePlayerImages = shuffleRouteImages([
+        "assets/player-kaydox.jpg",
+        "assets/player-tokyo.jpg",
+        "assets/player-sweetyklarika.jpg",
+        "assets/player-agora.jpg"
+      ]);
+      renderRouteStages();
+    });
+}
+
 document.querySelectorAll(".player-card[data-player-link]").forEach((card) => {
   const playerLink = card.dataset.playerLink;
   const platform = playerLink.includes("tiktok.com") ? "TikTok" : playerLink.includes("twitch.tv") ? "Twitch" : "Link";
