@@ -1623,6 +1623,16 @@ img {
   object-position: center 28%;
 }
 
+.player-fazu-card > img {
+  object-position: center 42%;
+}
+
+.player-fazu-card.tile-hero > img,
+.player-fazu-card.tile-wide > img,
+.player-fazu-card.tile-tall > img {
+  object-position: center 50%;
+}
+
 .player-klarika-card.tile-tall > img,
 .player-klarika-card.tile-hero > img,
 .player-klarika-card.tile-wide > img {
