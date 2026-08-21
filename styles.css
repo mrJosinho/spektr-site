@@ -1636,7 +1636,7 @@ img {
 .player-klarika-card.tile-tall > img,
 .player-klarika-card.tile-hero > img,
 .player-klarika-card.tile-wide > img {
-  object-position: center 40%;
+  object-position: center 22%;
 }
 
 .player-agora-card.tile-hero > img,
