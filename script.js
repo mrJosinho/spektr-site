@@ -18,44 +18,59 @@ mobilePanel.querySelectorAll("a").forEach((link) => {
 
 document.querySelectorAll("[data-player-announcement-modal]").forEach((modal) => {
   const tweetUrl = modal.dataset.tweetUrl;
+  const videoSrc = modal.dataset.videoSrc;
+  const video = modal.querySelector("[data-announcement-video]");
   const closeButtons = modal.querySelectorAll("[data-announcement-close]");
   const params = new URLSearchParams(window.location.search);
   const forcePreview = params.has("previewAnnouncement");
-  const storageKey = `spektr-player-announcement:${tweetUrl}`;
+  const storageKey = `spektr-player-announcement:${videoSrc || tweetUrl}`;
 
-  if (!tweetUrl || (!forcePreview && localStorage.getItem(storageKey) === "seen")) {
+  if ((!videoSrc && !tweetUrl) || (!forcePreview && localStorage.getItem(storageKey) === "seen")) {
     return;
   }
 
   function closeAnnouncement() {
     localStorage.setItem(storageKey, "seen");
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+    }
     modal.hidden = true;
     body.classList.remove("modal-open");
   }
 
-  function loadXEmbed() {
-    if (window.twttr?.widgets) {
-      window.twttr.widgets.load(modal);
+  function playAnnouncementVideo() {
+    if (!video) {
       return;
     }
 
-    if (!document.querySelector('script[src="https://platform.twitter.com/widgets.js"]')) {
-      const script = document.createElement("script");
-      script.src = "https://platform.twitter.com/widgets.js";
-      script.async = true;
-      script.charset = "utf-8";
-      script.onload = () => window.twttr?.widgets?.load(modal);
-      document.head.appendChild(script);
-      return;
-    }
+    video.volume = 0.5;
+    video.muted = false;
+    video.play().catch(() => {
+      video.muted = true;
+      video.volume = 0.5;
+      video.play()
+        .then(() => {
+          window.setTimeout(() => {
+            video.volume = 0.5;
+            video.muted = false;
+          }, 300);
+        })
+        .catch(() => {
+          video.controls = true;
+        });
+    });
+  }
 
-    window.twttr?.widgets?.load(modal);
+  if (video) {
+    video.volume = 0.5;
+    video.addEventListener("ended", closeAnnouncement);
   }
 
   function openAnnouncement() {
     modal.hidden = false;
     body.classList.add("modal-open");
-    loadXEmbed();
+    playAnnouncementVideo();
   }
 
   openAnnouncement();
