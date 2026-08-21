@@ -25,13 +25,15 @@ document.querySelectorAll("[data-player-announcement-modal]").forEach((modal) =>
   const params = new URLSearchParams(window.location.search);
   const forcePreview = params.has("previewAnnouncement");
   const storageKey = `spektr-player-announcement:${videoSrc || tweetUrl}`;
+  const announcementCooldown = 5 * 60 * 1000;
+  const nextDisplayTime = Number(localStorage.getItem(storageKey) || 0);
 
-  if ((!videoSrc && !tweetUrl) || (!forcePreview && localStorage.getItem(storageKey) === "seen")) {
+  if ((!videoSrc && !tweetUrl) || (!forcePreview && Date.now() < nextDisplayTime)) {
     return;
   }
 
   function closeAnnouncement() {
-    localStorage.setItem(storageKey, "seen");
+    localStorage.setItem(storageKey, String(Date.now() + announcementCooldown));
     if (video) {
       video.pause();
       video.currentTime = 0;
