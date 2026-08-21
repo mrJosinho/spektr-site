@@ -1316,6 +1316,7 @@ img {
 }
 
 .player-announcement-media {
+  position: relative;
   background: var(--black);
 }
 
@@ -1328,6 +1329,28 @@ img {
 }
 
 .player-announcement-media video + .announcement-fallback {
+  display: none;
+}
+
+.announcement-sound-toggle {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  z-index: 2;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid rgba(255,255,255,.42);
+  border-radius: 999px;
+  background: rgba(0,0,0,.72);
+  color: var(--white);
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.announcement-sound-toggle[hidden] {
   display: none;
 }
 
@@ -1391,9 +1414,25 @@ img {
   align-items: center;
 }
 
+.announcement-actions .text-link {
+  min-height: 46px;
+  padding: 0 14px 0 18px;
+  border: 1px solid rgba(255,255,255,.36);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--white);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.announcement-actions button.text-link {
+  border-color: var(--white);
+  background: var(--white);
+  color: var(--black);
+}
+
 .announcement-x-button {
   display: inline-flex;
-  text-decoration: none;
 }
 
 .roster-grid {

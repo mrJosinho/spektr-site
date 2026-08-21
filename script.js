@@ -20,6 +20,7 @@ document.querySelectorAll("[data-player-announcement-modal]").forEach((modal) =>
   const tweetUrl = modal.dataset.tweetUrl;
   const videoSrc = modal.dataset.videoSrc;
   const video = modal.querySelector("[data-announcement-video]");
+  const soundButton = modal.querySelector("[data-announcement-sound]");
   const closeButtons = modal.querySelectorAll("[data-announcement-close]");
   const params = new URLSearchParams(window.location.search);
   const forcePreview = params.has("previewAnnouncement");
@@ -49,6 +50,7 @@ document.querySelectorAll("[data-player-announcement-modal]").forEach((modal) =>
     video.play().catch(() => {
       video.muted = true;
       video.volume = 0.25;
+      soundButton?.removeAttribute("hidden");
       video.play().catch(() => {
         video.controls = true;
       });
@@ -58,6 +60,20 @@ document.querySelectorAll("[data-player-announcement-modal]").forEach((modal) =>
   if (video) {
     video.volume = 0.25;
     video.addEventListener("ended", closeAnnouncement);
+    video.addEventListener("volumechange", () => {
+      soundButton?.toggleAttribute("hidden", !video.muted);
+    });
+  }
+
+  if (soundButton && video) {
+    soundButton.addEventListener("click", () => {
+      video.volume = 0.25;
+      video.muted = false;
+      soundButton.setAttribute("hidden", "");
+      video.play().catch(() => {
+        soundButton.removeAttribute("hidden");
+      });
+    });
   }
 
   function openAnnouncement() {
