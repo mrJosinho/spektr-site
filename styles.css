@@ -353,89 +353,27 @@ img {
   position: absolute;
   inset: 0;
   z-index: -2;
-  background:
-    radial-gradient(circle at 54% 34%, rgba(255,79,160,.24), transparent 28%),
-    linear-gradient(120deg, #050505 0%, #11010a 58%, #050505 100%);
+  background: inherit;
   filter: grayscale(.18) contrast(1.05);
 }
 
 .route-card::after {
   z-index: -1;
-  background:
-    linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.86)),
-    linear-gradient(90deg, rgba(0,0,0,.2), transparent 58%);
+  background: linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.82));
 }
 
 .route-card:hover::after {
-  background:
-    linear-gradient(180deg, rgba(255,79,160,.12), rgba(0,0,0,.8)),
-    linear-gradient(90deg, rgba(0,0,0,.16), transparent 58%);
+  background: linear-gradient(180deg, rgba(255,79,160,.12), rgba(0,0,0,.78));
 }
 
 .route-joueurs {
-  background-image: none;
+  background-image: url("assets/banner-mix.png");
+  background-position: 12% center;
 }
 
 .route-calendrier {
-  background-image: none;
-}
-
-.route-player-pair {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 42% 45%, rgba(255,79,160,.24), transparent 25%),
-    radial-gradient(circle at 68% 32%, rgba(255,255,255,.05), transparent 24%);
-}
-
-.route-player-pair img {
-  position: absolute;
-  bottom: 0;
-  width: auto;
-  height: 108%;
-  max-width: none;
-  object-fit: contain;
-  object-position: bottom center;
-  opacity: 0;
-  filter:
-    saturate(1.02)
-    contrast(1.08)
-    brightness(.78)
-    drop-shadow(0 22px 30px rgba(0,0,0,.5));
-  transform: translateY(16px) scale(.98);
-  transition: opacity .55s ease, transform .55s ease, filter .55s ease;
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 78%, transparent 100%);
-  mask-image: linear-gradient(180deg, #000 0%, #000 78%, transparent 100%);
-}
-
-.route-player-pair img:first-child {
-  left: -7%;
-}
-
-.route-player-pair img:last-child {
-  right: -5%;
-  height: 101%;
-  opacity: 0;
-}
-
-.route-player-pair.is-ready img {
-  opacity: .9;
-  transform: translateY(0) scale(1);
-}
-
-.route-player-pair.is-ready img:last-child {
-  opacity: .76;
-  transform: translateY(0) scale(.98);
-}
-
-.route-card:hover .route-player-pair img {
-  filter:
-    saturate(1.12)
-    contrast(1.12)
-    brightness(.86)
-    drop-shadow(0 26px 34px rgba(0,0,0,.55));
+  background-image: url("assets/banner-filles.png");
+  background-position: 16% center;
 }
 
 .route-shop {
