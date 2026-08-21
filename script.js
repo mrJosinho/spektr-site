@@ -45,11 +45,11 @@ document.querySelectorAll("[data-player-announcement-modal]").forEach((modal) =>
       return;
     }
 
-    video.volume = 0.1;
+    video.volume = 0.08;
     video.muted = false;
     video.play().catch(() => {
       video.muted = true;
-      video.volume = 0.1;
+      video.volume = 0.08;
       soundButton?.removeAttribute("hidden");
       video.play().catch(() => {
         video.controls = true;
@@ -58,7 +58,7 @@ document.querySelectorAll("[data-player-announcement-modal]").forEach((modal) =>
   }
 
   if (video) {
-    video.volume = 0.1;
+    video.volume = 0.08;
     video.addEventListener("ended", closeAnnouncement);
     video.addEventListener("volumechange", () => {
       soundButton?.toggleAttribute("hidden", !video.muted);
@@ -67,7 +67,7 @@ document.querySelectorAll("[data-player-announcement-modal]").forEach((modal) =>
 
   if (soundButton && video) {
     soundButton.addEventListener("click", () => {
-      video.volume = 0.1;
+      video.volume = 0.08;
       video.muted = false;
       soundButton.setAttribute("hidden", "");
       video.play().catch(() => {
