@@ -1633,6 +1633,16 @@ img {
   object-position: center 50%;
 }
 
+.player-fiona-card > img {
+  object-position: 62% 18%;
+}
+
+.player-fiona-card.tile-hero > img,
+.player-fiona-card.tile-wide > img,
+.player-fiona-card.tile-tall > img {
+  object-position: 72% 20%;
+}
+
 .player-klarika-card.tile-tall > img,
 .player-klarika-card.tile-hero > img,
 .player-klarika-card.tile-wide > img {
