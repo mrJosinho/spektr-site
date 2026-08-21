@@ -1328,10 +1328,6 @@ img {
   background: var(--black);
 }
 
-.player-announcement-media video + .announcement-fallback {
-  display: none;
-}
-
 .announcement-sound-toggle {
   position: absolute;
   left: 18px;
