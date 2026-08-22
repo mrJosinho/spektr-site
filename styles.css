@@ -1242,6 +1242,82 @@ img {
   filter: drop-shadow(0 36px 55px rgba(0,0,0,.2));
 }
 
+.about-split.about-identity {
+  grid-template-columns: minmax(0, .9fr) minmax(360px, 1fr);
+  align-items: stretch;
+  gap: clamp(28px, 5vw, 72px);
+  background:
+    radial-gradient(circle at 86% 10%, rgba(255,79,160,.22), transparent 34%),
+    linear-gradient(120deg, #000 0%, #070103 54%, #2b0615 100%);
+  color: var(--white);
+}
+
+.about-identity-copy {
+  align-self: center;
+}
+
+.about-identity .eyebrow {
+  color: var(--pink);
+}
+
+.about-identity h2 {
+  max-width: 780px;
+  color: var(--white);
+}
+
+.about-identity p {
+  max-width: 690px;
+  color: rgba(255,255,255,.72);
+}
+
+.about-identity .text-link {
+  color: var(--white);
+}
+
+.about-identity-grid {
+  display: grid;
+  align-content: center;
+  min-height: 460px;
+  border: 1px solid var(--line);
+}
+
+.about-identity-grid article {
+  min-height: 150px;
+  padding: clamp(22px, 2.5vw, 34px);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255,255,255,.035);
+}
+
+.about-identity-grid article:nth-child(2) {
+  margin-left: clamp(0px, 5vw, 54px);
+}
+
+.about-identity-grid article:nth-child(3) {
+  margin-left: clamp(0px, 10vw, 108px);
+  border-bottom: 0;
+}
+
+.about-identity-grid span {
+  display: block;
+  margin-bottom: 28px;
+  color: var(--pink);
+  font: 900 14px/1 Arial, sans-serif;
+}
+
+.about-identity-grid strong {
+  display: block;
+  color: var(--white);
+  font: 900 clamp(28px, 3.4vw, 52px)/.92 Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+.about-identity-grid p {
+  max-width: 420px;
+  margin: 14px 0 0;
+  color: rgba(255,255,255,.68);
+  font-size: clamp(14px, 1.05vw, 17px);
+}
+
 .about-timeline {
   padding: clamp(64px, 8vw, 112px) clamp(24px, 5vw, 70px);
   background: var(--black);
@@ -2170,6 +2246,15 @@ img {
 
   .about-split img {
     max-width: 360px;
+  }
+
+  .about-identity-grid {
+    min-height: auto;
+  }
+
+  .about-identity-grid article:nth-child(2),
+  .about-identity-grid article:nth-child(3) {
+    margin-left: 0;
   }
 
   .shop-product-card.featured-product {
