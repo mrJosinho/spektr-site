@@ -307,17 +307,6 @@ img {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  [data-text-reveal] > * {
-    opacity: 1;
-    transform: none;
-  }
-
-  [data-text-reveal].is-visible > * {
-    animation: none;
-  }
-}
-
 .text-link span,
 .center-link span {
   width: 31px;
