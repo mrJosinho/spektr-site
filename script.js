@@ -1,6 +1,38 @@
 const body = document.body;
+const siteHeader = document.querySelector(".site-header");
 const menuToggle = document.querySelector(".menu-toggle");
 const mobilePanel = document.querySelector(".mobile-panel");
+
+if (siteHeader) {
+  let lastScrollY = window.scrollY;
+  let isHeaderTicking = false;
+
+  function updateHeaderVisibility() {
+    const currentScrollY = Math.max(window.scrollY, 0);
+    const delta = currentScrollY - lastScrollY;
+    const isLocked = body.classList.contains("panel-open") || body.classList.contains("modal-open");
+
+    if (isLocked || currentScrollY < 12) {
+      siteHeader.classList.remove("is-hidden");
+    } else if (currentScrollY > 120 && delta > 8) {
+      siteHeader.classList.add("is-hidden");
+    } else if (delta < -8) {
+      siteHeader.classList.remove("is-hidden");
+    }
+
+    lastScrollY = currentScrollY;
+    isHeaderTicking = false;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!isHeaderTicking) {
+      window.requestAnimationFrame(updateHeaderVisibility);
+      isHeaderTicking = true;
+    }
+  }, { passive: true });
+
+  updateHeaderVisibility();
+}
 
 function setPanel(open) {
   body.classList.toggle("panel-open", open);
