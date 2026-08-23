@@ -246,6 +246,10 @@ document.querySelectorAll("[data-reveal-at]").forEach((element) => {
   setRevealState(element, Date.now() >= target);
 });
 
+document.querySelectorAll(".players-intro, .player-card .player-content").forEach((element) => {
+  element.setAttribute("data-text-reveal", "");
+});
+
 const textRevealElements = document.querySelectorAll("[data-text-reveal]");
 
 if ("IntersectionObserver" in window) {
