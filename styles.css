@@ -1593,9 +1593,7 @@ img {
   border-bottom: 1px solid var(--line);
   display: flex;
   align-items: flex-end;
-  background:
-    radial-gradient(circle at 18% 78%, rgba(255,79,160,.18), transparent 36%),
-    linear-gradient(135deg, #16040c 0%, #050505 58%, #10020a 100%);
+  background: #090909;
   isolation: isolate;
 }
 
@@ -1692,27 +1690,14 @@ img {
 .player-card::before {
   z-index: -1;
   background:
-    linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.88)),
-    radial-gradient(circle at 82% 22%, rgba(255,79,160,.24), transparent 34%),
-    radial-gradient(circle at 12% 86%, rgba(255,79,160,.18), transparent 42%),
-    repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 1px, transparent 1px 18px),
-    linear-gradient(90deg, rgba(255,79,160,.16), transparent 58%);
+    radial-gradient(circle at 82% 22%, rgba(255,79,160,.2), transparent 34%),
+    linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.91)),
+    linear-gradient(90deg, rgba(255,79,160,.18), transparent 58%);
 }
 
 .player-card::after {
   z-index: -2;
-  content: "SPEKTR";
-  inset: auto -28px 34px auto;
-  width: 420px;
-  color: rgba(255,255,255,.045);
-  font-family: Arial, sans-serif;
-  font-size: clamp(58px, 8vw, 140px);
-  font-weight: 900;
-  line-height: .8;
-  text-transform: uppercase;
-  transform: rotate(-90deg);
-  transform-origin: 50% 50%;
-  text-align: center;
+  border: 0 solid transparent;
 }
 
 .player-card > img {
