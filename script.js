@@ -49,20 +49,36 @@ mobilePanel.querySelectorAll("a").forEach((link) => {
 });
 
 document.querySelectorAll("[data-player-announcement-modal]").forEach((modal) => {
-  const tweetUrl = modal.dataset.tweetUrl;
+  const storageKey = "spektr-player-announcement";
+  const lastVideoKey = `${storageKey}:last-video`;
   const videoOptions = (modal.dataset.videoSrcList || "")
     .split("|")
     .map((src) => src.trim())
     .filter(Boolean);
-  const videoSrc = videoOptions.length
-    ? videoOptions[Math.floor(Math.random() * videoOptions.length)]
-    : modal.dataset.videoSrc;
+  const tweetOptions = (modal.dataset.tweetUrlList || "")
+    .split("|")
+    .map((url) => url.trim())
+    .filter(Boolean);
+  const fallbackVideoOptions = videoOptions.length
+    ? videoOptions
+    : [modal.dataset.videoSrc].filter(Boolean);
+  const lastVideoSrc = sessionStorage.getItem(lastVideoKey);
+  const videoChoices = fallbackVideoOptions.map((src, index) => ({ src, index }));
+  const freshVideoChoices = videoChoices.length > 1
+    ? videoChoices.filter((choice) => choice.src !== lastVideoSrc)
+    : videoChoices;
+  const videoPool = freshVideoChoices.length ? freshVideoChoices : videoChoices;
+  const selectedVideo = videoPool.length
+    ? videoPool[Math.floor(Math.random() * videoPool.length)]
+    : null;
+  const videoSrc = selectedVideo?.src || "";
+  const tweetUrl = tweetOptions[selectedVideo?.index] || modal.dataset.tweetUrl;
   const video = modal.querySelector("[data-announcement-video]");
   const soundButton = modal.querySelector("[data-announcement-sound]");
   const closeButtons = modal.querySelectorAll("[data-announcement-close]");
+  const xButtons = modal.querySelectorAll(".announcement-x-button");
   const params = new URLSearchParams(window.location.search);
   const forcePreview = params.has("previewAnnouncement");
-  const storageKey = "spektr-player-announcement";
 
   if ((!videoSrc && !tweetUrl) || (!forcePreview && sessionStorage.getItem(storageKey) === "seen")) {
     return;
@@ -71,7 +87,12 @@ document.querySelectorAll("[data-player-announcement-modal]").forEach((modal) =>
   if (video && videoSrc) {
     video.src = videoSrc;
     video.dataset.selectedVideoSrc = videoSrc;
+    sessionStorage.setItem(lastVideoKey, videoSrc);
   }
+
+  xButtons.forEach((button) => {
+    button.href = tweetUrl;
+  });
 
   function closeAnnouncement() {
     sessionStorage.setItem(storageKey, "seen");
