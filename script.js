@@ -50,16 +50,27 @@ mobilePanel.querySelectorAll("a").forEach((link) => {
 
 document.querySelectorAll("[data-player-announcement-modal]").forEach((modal) => {
   const tweetUrl = modal.dataset.tweetUrl;
-  const videoSrc = modal.dataset.videoSrc;
+  const videoOptions = (modal.dataset.videoSrcList || "")
+    .split("|")
+    .map((src) => src.trim())
+    .filter(Boolean);
+  const videoSrc = videoOptions.length
+    ? videoOptions[Math.floor(Math.random() * videoOptions.length)]
+    : modal.dataset.videoSrc;
   const video = modal.querySelector("[data-announcement-video]");
   const soundButton = modal.querySelector("[data-announcement-sound]");
   const closeButtons = modal.querySelectorAll("[data-announcement-close]");
   const params = new URLSearchParams(window.location.search);
   const forcePreview = params.has("previewAnnouncement");
-  const storageKey = `spektr-player-announcement:${videoSrc || tweetUrl}`;
+  const storageKey = "spektr-player-announcement";
 
   if ((!videoSrc && !tweetUrl) || (!forcePreview && sessionStorage.getItem(storageKey) === "seen")) {
     return;
+  }
+
+  if (video && videoSrc) {
+    video.src = videoSrc;
+    video.dataset.selectedVideoSrc = videoSrc;
   }
 
   function closeAnnouncement() {
