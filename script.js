@@ -273,7 +273,7 @@ if ("IntersectionObserver" in window) {
 document.querySelectorAll(".about-stats").forEach((stats) => {
   const counters = Array.from(stats.querySelectorAll("[data-count-up]"));
   let isAnimating = false;
-  let lastRun = 0;
+  let hasAnimated = false;
 
   function render(counter, value) {
     counter.textContent = String(Math.round(value));
@@ -313,12 +313,11 @@ document.querySelectorAll(".about-stats").forEach((stats) => {
   }
 
   function animateStats() {
-    const now = Date.now();
-    if (isAnimating || now - lastRun < 900) {
+    if (isAnimating || hasAnimated) {
       return;
     }
     isAnimating = true;
-    lastRun = now;
+    hasAnimated = true;
 
     counters.forEach((counter) => render(counter, 0));
     counters.forEach(animateCounter);
@@ -358,6 +357,7 @@ document.querySelectorAll(".about-stats").forEach((stats) => {
 
   const observer = new IntersectionObserver((entries) => {
     if (entries.some((entry) => entry.isIntersecting)) {
+      observer.unobserve(stats);
       setDynamicCounters().then(animateStats);
     }
   }, { threshold: 0.45 });
