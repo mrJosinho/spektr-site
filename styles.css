@@ -629,6 +629,7 @@ img {
 
 .roster-section .section-title h2 {
   margin: 0;
+  color: var(--white);
   font-size: clamp(42px, 6vw, 96px);
   line-height: .88;
   text-transform: uppercase;
