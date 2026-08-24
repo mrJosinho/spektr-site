@@ -1508,6 +1508,18 @@ img {
   background: var(--black);
 }
 
+.about-timeline .section-title {
+  color: var(--white);
+}
+
+.about-timeline .section-title h2 {
+  color: var(--white);
+}
+
+.about-timeline .section-title .eyebrow {
+  color: var(--pink);
+}
+
 .timeline-list {
   display: grid;
   margin-top: 34px;
