@@ -1,10 +1,10 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Joueurs - Spektr</title>
-    <meta name="description" content="Roster, staff et createurs Spektr.">
+    <meta name="description" content="Choisir un roster Spektr: COD Warzone ou Battlefield 6.">
     <meta name="referrer" content="no-referrer">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=2">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png?v=2">
@@ -27,334 +27,38 @@
     <div class="mobile-panel" hidden><a href="index.html">Accueil</a><a href="joueurs.html">Joueurs</a><a href="calendrier.html">Calendrier</a><a href="partenaires.html">Partenaires</a><a href="qui-sommes-nous.html">Club</a><a href="shop.html">Shop</a></div>
 
     <main>
-      <section class="page-hero players-hero">
+      <section class="page-hero players-hero team-hub-hero">
         <img src="assets/banner-mix.png" alt="Banniere Spektr avec joueurs">
-        <div>
-          <p class="eyebrow">Roster officiel</p>
-          <h1>Joueurs</h1>
+        <div data-text-reveal>
+          <p class="eyebrow">Rosters officiels</p>
+          <h1>Equipes</h1>
         </div>
       </section>
 
-      <section class="players-intro">
-        <p class="eyebrow">Roster 2026</p>
-        <h2>Les visages qui portent la nouvelle ere Spektr.</h2>
+      <section class="players-intro team-hub-intro" data-text-reveal>
+        <p class="eyebrow">Spektr rosters</p>
+        <h2>Choisis l'univers avant d'entrer dans le roster.</h2>
       </section>
 
-      <aside class="player-announcement-modal" data-player-announcement-modal data-video-src="https://video.twimg.com/amplify_video/2089304599106584576/vid/avc1/1920x1080/1QIEwp58YKDg1lqm.mp4?tag=29" data-video-src-list="https://video.twimg.com/amplify_video/2089304599106584576/vid/avc1/1920x1080/1QIEwp58YKDg1lqm.mp4?tag=29|https://video.twimg.com/amplify_video/2084281123853455360/vid/avc1/3840x2160/XEBC4I7-cZkvgGUd.mp4?tag=29" data-tweet-url="https://x.com/SPEKTR_ORG/status/2089304638742843810?s=20" data-tweet-url-list="https://x.com/SPEKTR_ORG/status/2089304638742843810?s=20|https://x.com/SPEKTR_ORG/status/2084281223912800426?s=20" hidden aria-modal="true" role="dialog" aria-labelledby="announcement-title">
-        <div class="player-announcement-shell">
-          <button class="player-announcement-close" type="button" data-announcement-close aria-label="Fermer l'annonce">&times;</button>
-          <div class="player-announcement-media">
-            <video data-announcement-video autoplay muted playsinline controls preload="auto" referrerpolicy="no-referrer" src="https://video.twimg.com/amplify_video/2089304599106584576/vid/avc1/1920x1080/1QIEwp58YKDg1lqm.mp4?tag=29"></video>
-            <button class="announcement-sound-toggle" type="button" data-announcement-sound hidden>Activer le son</button>
+      <section class="team-roster-grid" aria-label="Choix des rosters Spektr">
+        <a class="team-roster-card team-roster-warzone" href="warzone.html" data-text-reveal>
+          <img src="assets/banner-mix.png" alt="Roster COD Warzone Spektr">
+          <div>
+            <p class="eyebrow">01</p>
+            <h2>COD Warzone</h2>
+            <span>Joueurs competitifs, createurs et Spektr Family.</span>
+            <em>Decouvrir le roster <b aria-hidden="true">&rarr;</b></em>
           </div>
-          <div class="player-announcement-copy">
-            <p class="eyebrow">Derniere arrivee</p>
-            <h2 id="announcement-title">Nouveau joueur Spektr</h2>
-            <div class="announcement-actions">
-              <button class="text-link" type="button" data-announcement-close>Entrer dans le roster <span aria-hidden="true">&rarr;</span></button>
-              <a class="text-link announcement-x-button" href="https://x.com/SPEKTR_ORG/status/2089304638742843810?s=20" target="_blank" rel="noopener">Voir le post X <span aria-hidden="true">&rarr;</span></a>
-            </div>
+        </a>
+        <a class="team-roster-card team-roster-bf6" href="battlefield-6.html" data-text-reveal>
+          <img src="assets/player-sushiwz.jpg" alt="Roster Battlefield 6 Spektr">
+          <div>
+            <p class="eyebrow">02</p>
+            <h2>Battlefield 6</h2>
+            <span>FPS, clavier-souris et profils competitifs.</span>
+            <em>Decouvrir le roster <b aria-hidden="true">&rarr;</b></em>
           </div>
-        </div>
-      </aside>
-
-      <section class="roster-grid" aria-label="Fiches joueurs Spektr">
-        <article class="player-card player-kaydox-card" data-player-link="https://www.twitch.tv/kaydoxeu" tabindex="0" role="link" aria-label="Ouvrir la plateforme de Kaydox">
-          <img src="assets/player-kaydox.jpg" alt="Kaydox">
-          <div class="player-content">
-            <p>Competiteur</p>
-            <h2>Kaydox</h2>
-            <span>Futur prodige</span>
-            <p class="player-bio">Jeune prodige de la structure, Kaydox impressionne par son sang-froid, sa lecture du jeu et une mecanique tres propre sous pression.</p>
-            <ul><li>Warzone</li><li>Clutch</li><li>Top ranked</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.tiktok.com/search?q=keyz%20spektr" tabindex="0" role="link" aria-label="Ouvrir la plateforme de Keyz">
-          <img src="assets/player-keyz.png" alt="Keyz">
-          <div class="player-content">
-            <p>Nouveau joueur</p>
-            <h2>Keyz</h2>
-            <span>Roster 2026</span>
-            <p class="player-bio">Nouveau visage Spektr, Keyz rejoint le roster avec une presence forte, une image competitive et une vraie energie de scene.</p>
-            <ul><li>Warzone</li><li>Roster</li><li>Spektr</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.twitch.tv/vdaty" tabindex="0" role="link" aria-label="Ouvrir la plateforme de VDATY">
-          <img src="assets/player-vdaty.png" alt="VDATY">
-          <div class="player-content">
-            <p>Joueur competitif</p>
-            <h2>VDATY</h2>
-            <span>Qualifie EWC Paris 2026</span>
-            <p class="player-bio">Fragger explosif et joueur competitif confirme, VDATY apporte pression constante, lecture rapide et impact direct dans les moments decisifs.</p>
-            <ul><li>Fragger</li><li>EWC Paris</li><li>Impact</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.twitch.tv/coodly" tabindex="0" role="link" aria-label="Ouvrir la plateforme de COODLY">
-          <img src="assets/player-coodly.png" alt="COODLY">
-          <div class="player-content">
-            <p>Joueur competitif</p>
-            <h2>COODLY</h2>
-            <span>Qualifie EWC Paris 2026</span>
-            <p class="player-bio">Profil agressif et fiable, COODLY rejoint Spektr avec une vraie capacite a ouvrir les fights, enchainer les eliminations et maintenir le rythme.</p>
-            <ul><li>Fragger</li><li>EWC Paris</li><li>Tempo</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.twitch.tv/ous272" tabindex="0" role="link" aria-label="Ouvrir la plateforme de OUS">
-          <img src="assets/player-anonyme.png" alt="OUS">
-          <div class="player-content">
-            <p>Joueur competitif</p>
-            <h2>OUS</h2>
-            <span>Roster competitif</span>
-            <p class="player-bio">Profil fragger et joueur de pression, OUS arrive avec une mentalite de competition, capable d'accelerer les fights et de creer l'ouverture pour l'equipe.</p>
-            <ul><li>Fragger</li><li>Warzone</li><li>Pressure</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.twitch.tv/l8willy" tabindex="0" role="link" aria-label="Ouvrir la plateforme de WILLY">
-          <img src="assets/player-anonyme.png" alt="WILLY">
-          <div class="player-content">
-            <p>Joueur competitif</p>
-            <h2>WILLY</h2>
-            <span>Roster competitif</span>
-            <p class="player-bio">Joueur ambitieux et intense, WILLY apporte du rythme, de l'agressivite controlee et une vraie envie de performer sous les couleurs Spektr.</p>
-            <ul><li>Competition</li><li>Frag</li><li>Impact</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.twitch.tv/sushiwz_" tabindex="0" role="link" aria-label="Ouvrir la plateforme de SUSHIWZ">
-          <img src="assets/player-sushiwz.jpg" alt="SUSHIWZ">
-          <div class="player-content">
-            <p>Battlefield 6</p>
-            <h2>SUSHIWZ</h2>
-            <span>Clavier souris</span>
-            <p class="player-bio">Joueur clavier-souris de la Spektr, SUSHIWZ se specialise sur Battlefield 6 avec une culture FPS solide, une precision propre et un profil competitif taille pour les gros serveurs.</p>
-            <ul><li>FPS</li><li>Battlefield 6</li><li>Clavier souris</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.twitch.tv/fps_artek" tabindex="0" role="link" aria-label="Ouvrir la plateforme de ARTEK">
-          <img src="assets/player-anonyme.png" alt="ARTEK">
-          <div class="player-content">
-            <p>Battlefield 6</p>
-            <h2>ARTEK</h2>
-            <span>Joueur competitif</span>
-            <p class="player-bio">Joueur Battlefield 6 de la Spektr, ARTEK apporte un profil competitif, une culture FPS solide et une approche propre pour performer sur clavier-souris.</p>
-            <ul><li>Battlefield 6</li><li>FPS</li><li>Competition</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.twitch.tv/voltyx_0" tabindex="0" role="link" aria-label="Ouvrir la plateforme de Voltyx">
-          <img src="assets/player-voltyx.png" alt="Voltyx">
-          <div class="player-content">
-            <p>Nouveau joueur</p>
-            <h2>Voltyx</h2>
-            <span>Roster 2026</span>
-            <p class="player-bio">Voltyx apporte un profil propre, direct et ambitieux, taille pour porter les couleurs Spektr sur les prochains rendez-vous.</p>
-            <ul><li>Warzone</li><li>Focus</li><li>Teamplay</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.twitch.tv/ztokyowz" tabindex="0" role="link" aria-label="Ouvrir la plateforme de Tokyo">
-          <img src="assets/player-tokyo.jpg" alt="Tokyo">
-          <div class="player-content">
-            <p>Nouveau joueur</p>
-            <h2>Tokyo</h2>
-            <span>Roster 2026</span>
-            <p class="player-bio">Tokyo rejoint Spektr avec une identite visuelle marquee, un profil competitif et une attitude faite pour les gros moments.</p>
-            <ul><li>Clutch</li><li>Impact</li><li>Roster</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.twitch.tv/yenercod" tabindex="0" role="link" aria-label="Ouvrir la plateforme de Yener">
-          <img src="assets/player-yener.jpg" alt="Yener">
-          <div class="player-content">
-            <p>Nouveau joueur</p>
-            <h2>Yener</h2>
-            <span>Roster 2026</span>
-            <p class="player-bio">Yener integre la structure avec une presence sobre, intense et parfaitement alignee avec la nouvelle direction artistique Spektr.</p>
-            <ul><li>Precision</li><li>Discipline</li><li>Spektr</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.tiktok.com/@shadow_piouks?lang=fr" tabindex="0" role="link" aria-label="Ouvrir la plateforme de Shadow Piouks">
-          <img src="assets/player-shadow-piouks.png" alt="Shadow Piouks">
-          <div class="player-content">
-            <p>Createur</p>
-            <h2>Shadow Piouks</h2>
-            <span>Roster 2026</span>
-            <p class="player-bio">Shadow Piouks arrive avec une image puissante, elegante et tres Spektr, entre calme, confiance et intensite competitive.</p>
-            <ul><li>Warzone</li><li>Live</li><li>Roster</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://beacons.ai/darkainzer" tabindex="0" role="link" aria-label="Ouvrir la plateforme de darkainzer">
-          <img src="assets/player-anonyme.png" alt="darkainzer">
-          <div class="player-content">
-            <p>Createur</p>
-            <h2>darkainzer</h2>
-            <span>Warzone content</span>
-            <p class="player-bio">Createur oriente gameplay intense, analyses et highlights, avec un montage dynamique pense pour engager sa communaute.</p>
-            <ul><li>TikTok</li><li>Highlights</li><li>Warzone</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.twitch.tv/meyukii" tabindex="0" role="link" aria-label="Ouvrir la plateforme de Meyukii">
-          <img src="assets/player-meyukii.png" alt="Meyukii">
-          <div class="player-content">
-            <p>Competitrice</p>
-            <h2>Meyukii</h2>
-            <span>Warzone</span>
-            <p class="player-bio">Streameuse reconnue et joueuse competitive, elle apporte experience, aim solide et une envie assumee de dominer les lobbies.</p>
-            <ul><li>Twitch</li><li>Aim</li><li>Tournois</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.twitch.tv/durtyjr" tabindex="0" role="link" aria-label="Ouvrir la plateforme de Durty">
-          <img src="assets/player-durty.png" alt="Durty">
-          <div class="player-content">
-            <p>Createur</p>
-            <h2>Durty</h2>
-            <span>Depuis MW2</span>
-            <p class="player-bio">Createur constant et authentique, Durty construit son univers entre Call of Duty, streaming et passion du format depuis ses debuts.</p>
-            <ul><li>Stream</li><li>CoD</li><li>Authentique</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.tiktok.com/@sleazy.jr?_r=1" tabindex="0" role="link" aria-label="Ouvrir la plateforme de SLEAZY JR">
-          <img src="assets/player-sleazy-jr.png" alt="SLEAZY JR">
-          <div class="player-content">
-            <p>Createur</p>
-            <h2>SLEAZY JR</h2>
-            <span>TikTok</span>
-            <p class="player-bio">Joueur talentueux et createur dynamique, Sleazy JR represente la nouvelle generation Spektr avec une presence forte en contenu court.</p>
-            <ul><li>Clips</li><li>Talent</li><li>Impact</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card featured-player" data-player-link="https://www.twitch.tv/bryssou_" tabindex="0" role="link" aria-label="Ouvrir la plateforme de BRYCE">
-          <img src="assets/player-bryce.png" alt="BRYCE">
-          <div class="player-content">
-            <p>Leader</p>
-            <h2>BRYCE</h2>
-            <span>24 ans - Marseille</span>
-            <p class="player-bio">Leader reflechi et support engage, Bryce combine discipline sportive, vision collective et ambition competitive pour porter Spektr plus haut.</p>
-            <ul><li>Support</li><li>Leader</li><li>WSOW</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card player-naaqz-card" data-player-link="https://www.twitch.tv/tnaaqz" tabindex="0" role="link" aria-label="Ouvrir la plateforme de NAAQZ">
-          <img src="assets/player-naaqz.jpg" alt="NAAQZ">
-          <div class="player-content">
-            <p>Competiteur</p>
-            <h2>NAAQZ</h2>
-            <span>Warzone</span>
-            <p class="player-bio">Profil complet, tactique et discipline, NAAQZ associe experience competitive, intelligence de jeu et vraie rigueur hors serveur.</p>
-            <ul><li>Top 250</li><li>Rigueur</li><li>Strat</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card player-fazu-card" data-player-link="https://www.twitch.tv/fazucod" tabindex="0" role="link" aria-label="Ouvrir la plateforme de Fazu">
-          <img src="assets/player-fazu.jpg" alt="Fazu">
-          <div class="player-content">
-            <p>Academy</p>
-            <h2>Fazu</h2>
-            <span>Fragger</span>
-            <p class="player-bio">Prodige fragger de la Spektr Academy, Fazu se distingue par son instinct, son agressivite controlee et son potentiel brut.</p>
-            <ul><li>Academy</li><li>Frag</li><li>Instinct</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.twitch.tv/spotzyy__" tabindex="0" role="link" aria-label="Ouvrir la plateforme de Spottzy">
-          <img src="assets/player-spottzy.jpg" alt="Spottzy">
-          <div class="player-content">
-            <p>Spektr Academy</p>
-            <h2>Spottzy</h2>
-            <span>Jeune joueur competitif</span>
-            <p class="player-bio">Jeune profil de la Spektr Academy, Spottzy avance avec une mentalite competitive, de l'envie et une vraie marge de progression pour s'imposer dans les prochains lobbies.</p>
-            <ul><li>Academy</li><li>Competition</li><li>Progression</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card player-oxaa-card" data-player-link="https://www.twitch.tv/oxaa__" tabindex="0" role="link" aria-label="Ouvrir la plateforme de Oxaa">
-          <img src="assets/player-oxaa.jpg" alt="Oxaa">
-          <div class="player-content">
-            <p>Competiteur</p>
-            <h2>Oxaa</h2>
-            <span>Membre historique</span>
-            <p class="player-bio">Parmi les premiers membres Spektr, Oxaa apporte experience, regularite et connaissance du jeu competitive Warzone.</p>
-            <ul><li>Warzone</li><li>Experience</li><li>Equipe</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card player-klarika-card" data-player-link="https://www.twitch.tv/sweetyklarika" tabindex="0" role="link" aria-label="Ouvrir la plateforme de Klarika">
-          <img src="assets/player-sweetyklarika.jpg" alt="Klarika">
-          <div class="player-content">
-            <p>Competitrice</p>
-            <h2>Klarika</h2>
-            <span>Battle Royale</span>
-            <p class="player-bio">Joueuse competitive passionnee et determinee, elle s'impose dans l'univers Warzone avec une energie tres Spektr.</p>
-            <ul><li>Warzone</li><li>Focus</li><li>Battle Royale</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card player-agora-card" data-player-link="https://www.twitch.tv/agora_____" tabindex="0" role="link" aria-label="Ouvrir la plateforme de AGORA">
-          <img src="assets/player-agora.jpg" alt="AGORA">
-          <div class="player-content">
-            <p>Content creator</p>
-            <h2>AGORA</h2>
-            <span>Twitch & TikTok</span>
-            <p class="player-bio">Membre engagee, Agora combine passion du jeu, professionnalisme et presence sociale pour faire vivre l'univers Spektr.</p>
-            <ul><li>Live</li><li>Communaute</li><li>Contenu</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card player-fiona-card" data-player-link="https://www.twitch.tv/princessefiona_" tabindex="0" role="link" aria-label="Ouvrir la plateforme de PrincesseFiona_">
-          <img src="assets/player-princessefiona.png" alt="PrincesseFiona_">
-          <div class="player-content">
-            <p>Content creator</p>
-            <h2>Princesse<br>Fiona_</h2>
-            <span>Spektr family</span>
-            <p class="player-bio">Figure fun et inclusive, Fiona rejoint Spektr avec son univers rose, son humour et une communaute fidele autour de Warzone.</p>
-            <ul><li>Twitch</li><li>Safe place</li><li>Fun</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.twitch.tv/yukinae__" tabindex="0" role="link" aria-label="Ouvrir la plateforme de YUKINAE">
-          <img src="assets/player-yukinae.png" alt="YUKINAE">
-          <div class="player-content">
-            <p>Content creator</p>
-            <h2>YUKINAE</h2>
-            <span>23 ans</span>
-            <p class="player-bio">Content creator passionnee et joueuse engagee, Yukinae partage son energie et son univers avec une communaute fidele.</p>
-            <ul><li>TikTok</li><li>Sniper</li><li>Rebirth</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.twitch.tv/eddielafrime" tabindex="0" role="link" aria-label="Ouvrir la plateforme de eddielafrime">
-          <img src="assets/player-eddielafrime.png" alt="eddielafrime">
-          <div class="player-content">
-            <p>Spektr Family</p>
-            <h2>eddielafrime</h2>
-            <span>Joueur competitif</span>
-            <p class="player-bio">Ami de longue date de Spektr, eddielafrime rejoint la famille avec un profil competitif, une vraie culture du jeu et l'envie de representer la structure dans les lobbies.</p>
-            <ul><li>Spektr Family</li><li>Competition</li><li>Warzone</li></ul>
-          </div>
-        </article>
-
-        <article class="player-card" data-player-link="https://www.twitch.tv/noahsau" tabindex="0" role="link" aria-label="Ouvrir la plateforme de Noahsau">
-          <img src="assets/player-noahsau.jpg" alt="Noahsau">
-          <div class="player-content">
-            <p>Academy</p>
-            <h2>Noahsau</h2>
-            <span>Competiteur</span>
-            <p class="player-bio">Competiteur ambitieux, Noahsau travaille ses mecaniques, sa prise de decision et sa communication pour s'affirmer chez Spektr.</p>
-            <ul><li>Academy</li><li>Precision</li><li>Decision</li></ul>
-          </div>
-        </article>
+        </a>
       </section>
     </main>
 
@@ -366,5 +70,6 @@
     <script src="script.js"></script>
   </body>
 </html>
+
 
 

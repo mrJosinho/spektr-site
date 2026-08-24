@@ -334,15 +334,16 @@ document.querySelectorAll(".about-stats").forEach((stats) => {
       return Promise.resolve();
     }
 
-    return fetch("joueurs.html")
-      .then((response) => response.text())
-      .then((html) => {
-        const doc = new DOMParser().parseFromString(html, "text/html");
-        const totalPlayers = doc.querySelectorAll(".player-card").length;
+    const rosterPages = ["warzone.html", "battlefield-6.html"];
 
-        if (totalPlayers > 0) {
-          playerCounter.dataset.countUp = String(totalPlayers);
-        }
+    return Promise.all(rosterPages.map((page) => fetch(page).then((response) => response.text())))
+      .then((pages) => {
+        const totalPlayers = pages.reduce((total, html) => {
+          const doc = new DOMParser().parseFromString(html, "text/html");
+          return total + doc.querySelectorAll(".player-card").length;
+        }, 0);
+
+        playerCounter.dataset.countUp = String(totalPlayers);
       })
       .catch(() => {
         const localTotal = document.querySelectorAll(".player-card").length;
