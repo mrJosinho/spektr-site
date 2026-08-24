@@ -591,7 +591,14 @@ img {
 }
 
 .battlefield-hero > img {
-  object-position: center 24%;
+  object-position: center;
+  filter: grayscale(1) contrast(1.12) brightness(.58);
+}
+
+.battlefield-hero::after {
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.82)),
+    linear-gradient(90deg, rgba(0,0,0,.72), rgba(0,0,0,.32) 48%, rgba(0,0,0,.76));
 }
 
 .roster-page-intro {
