@@ -599,10 +599,16 @@ img {
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 24px;
   align-items: end;
+  color: var(--ink);
 }
 
 .roster-page-intro h2 {
+  color: var(--ink);
   max-width: 960px;
+}
+
+.roster-page-intro .text-link {
+  color: var(--ink);
 }
 
 .roster-actions {
