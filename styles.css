@@ -1930,6 +1930,16 @@ img {
   object-position: center 20%;
 }
 
+.player-lodou-card > img {
+  object-position: center 16%;
+}
+
+.player-lodou-card.tile-hero > img,
+.player-lodou-card.tile-wide > img,
+.player-lodou-card.tile-tall > img {
+  object-position: center 18%;
+}
+
 .player-fazu-card > img {
   object-position: center 18%;
 }
