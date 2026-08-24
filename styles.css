@@ -1920,6 +1920,16 @@ img {
   object-position: center 28%;
 }
 
+.player-saritaa-card > img {
+  object-position: center 18%;
+}
+
+.player-saritaa-card.tile-hero > img,
+.player-saritaa-card.tile-wide > img,
+.player-saritaa-card.tile-tall > img {
+  object-position: center 20%;
+}
+
 .player-fazu-card > img {
   object-position: center 18%;
 }
