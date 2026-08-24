@@ -1921,13 +1921,13 @@ img {
 }
 
 .player-fazu-card > img {
-  object-position: center 42%;
+  object-position: center 18%;
 }
 
 .player-fazu-card.tile-hero > img,
 .player-fazu-card.tile-wide > img,
 .player-fazu-card.tile-tall > img {
-  object-position: center 50%;
+  object-position: center 20%;
 }
 
 .player-fiona-card > img {
