@@ -2431,6 +2431,10 @@ img {
     grid-template-columns: 1fr;
   }
 
+  .about-split.about-identity {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .route-grid,
   .team-roster-grid,
   .profile-grid,
