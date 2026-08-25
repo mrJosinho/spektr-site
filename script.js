@@ -407,6 +407,9 @@ document.querySelectorAll("[data-countdown]").forEach((countdown) => {
   const openingDate = new Date("2026-09-10T00:00:00+02:00");
   const unlockPassword = "spektr2026";
   const unlockStorageKey = "spektrTeaserUnlocked";
+  const teaserParams = new URLSearchParams(window.location.search);
+  const forceTeaser = teaserParams.has("previewTeaser") || teaserParams.get("teaser") === "1";
+  const resetTeaser = teaserParams.has("resetTeaser");
   let secretClickCount = 0;
 
   function hasOpeningDatePassed() {
@@ -424,6 +427,14 @@ document.querySelectorAll("[data-countdown]").forEach((countdown) => {
   function rememberTeaserUnlock() {
     try {
       sessionStorage.setItem(unlockStorageKey, "true");
+    } catch (error) {
+      return;
+    }
+  }
+
+  function clearTeaserUnlock() {
+    try {
+      sessionStorage.removeItem(unlockStorageKey);
     } catch (error) {
       return;
     }
@@ -472,13 +483,17 @@ document.querySelectorAll("[data-countdown]").forEach((countdown) => {
       }
     });
 
-    if (rawRemaining <= 0) {
+    if (rawRemaining <= 0 && !forceTeaser) {
       releaseTeaser(document.querySelector(".teaser-lock"));
     }
   }
 
   function mountComingSoonLock() {
-    if (hasOpeningDatePassed() || isTeaserUnlocked()) {
+    if (resetTeaser) {
+      clearTeaserUnlock();
+    }
+
+    if (!forceTeaser && (hasOpeningDatePassed() || isTeaserUnlocked())) {
       return;
     }
 
