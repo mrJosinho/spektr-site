@@ -401,3 +401,197 @@ document.querySelectorAll("[data-countdown]").forEach((countdown) => {
   tick();
   setInterval(tick, 1000);
 });
+
+(() => {
+  const currentShopUrl = "/ancienshop/";
+  const openingDate = new Date("2026-09-10T00:00:00+02:00");
+  const unlockPassword = "spektr2026";
+  const unlockStorageKey = "spektrTeaserUnlocked";
+  let secretClickCount = 0;
+
+  function hasOpeningDatePassed() {
+    return Date.now() >= openingDate.getTime();
+  }
+
+  function isTeaserUnlocked() {
+    try {
+      return sessionStorage.getItem(unlockStorageKey) === "true";
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function rememberTeaserUnlock() {
+    try {
+      sessionStorage.setItem(unlockStorageKey, "true");
+    } catch (error) {
+      return;
+    }
+  }
+
+  function releaseTeaser(lock) {
+    document.body.classList.remove("teaser-lock-page");
+
+    Array.from(document.body.children).forEach((element) => {
+      element.removeAttribute("inert");
+      element.removeAttribute("aria-hidden");
+    });
+
+    if (lock) {
+      lock.remove();
+    }
+  }
+
+  function updateTeaserCountdown() {
+    const countdown = document.querySelector("[data-teaser-countdown]");
+
+    if (!countdown) {
+      return;
+    }
+
+    const rawRemaining = openingDate.getTime() - Date.now();
+    const remaining = Math.max(0, rawRemaining);
+    const totalSeconds = Math.floor(remaining / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    const values = {
+      days,
+      hours,
+      minutes,
+      seconds,
+    };
+
+    Object.entries(values).forEach(([key, value]) => {
+      const node = countdown.querySelector(`[data-teaser-${key}]`);
+
+      if (node) {
+        node.textContent = String(value).padStart(2, "0");
+      }
+    });
+
+    if (rawRemaining <= 0) {
+      releaseTeaser(document.querySelector(".teaser-lock"));
+    }
+  }
+
+  function mountComingSoonLock() {
+    if (hasOpeningDatePassed() || isTeaserUnlocked()) {
+      return;
+    }
+
+    if (document.querySelector(".teaser-lock")) {
+      return;
+    }
+
+    document.body.classList.add("teaser-lock-page");
+
+    const lock = document.createElement("section");
+    lock.className = "teaser-lock";
+    lock.setAttribute("role", "dialog");
+    lock.setAttribute("aria-modal", "true");
+    lock.setAttribute("aria-labelledby", "teaser-lock-title");
+    lock.innerHTML = `
+      <div class="teaser-lock-card">
+        <div class="teaser-lock-topline">
+          <img src="assets/spektr-crest.png" alt="">
+          <span>Since 2023</span>
+        </div>
+        <p class="eyebrow">Site officiel</p>
+        <h1 id="teaser-lock-title">
+          <span>Bientot</span>
+          <span>We Are Spektr</span>
+        </h1>
+        <p>La nouvelle experience est en preparation. Acces ferme pendant les derniers reglages.</p>
+        <div class="teaser-lock-status">
+          <span></span>
+          <strong>Nouveau site en approche</strong>
+        </div>
+        <div class="teaser-countdown" data-teaser-countdown aria-label="Compte a rebours avant ouverture du site">
+          <div>
+            <strong data-teaser-days>00</strong>
+            <span>Jours</span>
+          </div>
+          <div>
+            <strong data-teaser-hours>00</strong>
+            <span>Heures</span>
+          </div>
+          <div>
+            <strong data-teaser-minutes>00</strong>
+            <span>Min</span>
+          </div>
+          <div>
+            <strong data-teaser-seconds>00</strong>
+            <span>Sec</span>
+          </div>
+        </div>
+        <a class="teaser-shop-link" href="${currentShopUrl}" aria-label="Acces shop">
+          Acces shop <span aria-hidden="true">&rarr;</span>
+        </a>
+        <div class="teaser-unlock-panel" aria-hidden="true">
+          <p class="eyebrow">Acces prive</p>
+          <h2>Debloquer<br>la preview</h2>
+          <form class="teaser-unlock-form">
+            <label for="teaser-unlock-password">Mot de passe</label>
+            <input id="teaser-unlock-password" type="password" autocomplete="current-password" spellcheck="false">
+            <button type="submit">Entrer <span aria-hidden="true">&rarr;</span></button>
+            <p class="teaser-unlock-error" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    `;
+
+    document.body.append(lock);
+    updateTeaserCountdown();
+    setInterval(updateTeaserCountdown, 1000);
+
+    const title = lock.querySelector("#teaser-lock-title");
+    const unlockPanel = lock.querySelector(".teaser-unlock-panel");
+    const unlockForm = lock.querySelector(".teaser-unlock-form");
+    const passwordInput = lock.querySelector("#teaser-unlock-password");
+    const errorMessage = lock.querySelector(".teaser-unlock-error");
+
+    title.addEventListener("click", (event) => {
+      if (!event.shiftKey) {
+        secretClickCount = 0;
+        return;
+      }
+
+      secretClickCount += 1;
+
+      if (secretClickCount >= 5) {
+        lock.classList.add("is-unlock-open");
+        unlockPanel.setAttribute("aria-hidden", "false");
+        setTimeout(() => passwordInput.focus(), 80);
+      }
+    });
+
+    unlockForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (passwordInput.value.trim() === unlockPassword) {
+        rememberTeaserUnlock();
+        releaseTeaser(lock);
+        return;
+      }
+
+      errorMessage.textContent = "Mot de passe incorrect.";
+      passwordInput.select();
+    });
+
+    Array.from(document.body.children).forEach((element) => {
+      if (element !== lock && element.tagName !== "SCRIPT") {
+        element.setAttribute("inert", "");
+        element.setAttribute("aria-hidden", "true");
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", mountComingSoonLock);
+  } else {
+    mountComingSoonLock();
+  }
+})();
