@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Acces shop - Spektr</title>
+    <title>Shop - Spektr</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
     <style>
       :root {
+        --red: #ff3445;
         --pink: #ff3fa6;
-        --muted: rgba(255, 255, 255, 0.66);
-        --line: rgba(255, 255, 255, 0.16);
+        --cream: #f7f2ec;
+        --line: rgba(255, 255, 255, 0.12);
       }
 
       * {
@@ -19,221 +20,370 @@
       body {
         margin: 0;
         min-height: 100vh;
-        color: #fff;
-        background:
-          radial-gradient(circle at 72% 30%, rgba(255, 63, 166, 0.24), transparent 30rem),
-          linear-gradient(135deg, #000 0%, #090006 52%, #230516 100%);
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 900;
+        color: var(--cream);
+        background-color: #171717;
+        background-image:
+          linear-gradient(30deg, rgba(255, 255, 255, 0.055) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.055) 87.5%, rgba(255, 255, 255, 0.055)),
+          linear-gradient(150deg, rgba(255, 255, 255, 0.055) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.055) 87.5%, rgba(255, 255, 255, 0.055)),
+          linear-gradient(30deg, rgba(255, 255, 255, 0.055) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.055) 87.5%, rgba(255, 255, 255, 0.055)),
+          linear-gradient(150deg, rgba(255, 255, 255, 0.055) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.055) 87.5%, rgba(255, 255, 255, 0.055)),
+          linear-gradient(60deg, rgba(255, 255, 255, 0.04) 25%, transparent 25.5%, transparent 75%, rgba(255, 255, 255, 0.04) 75%, rgba(255, 255, 255, 0.04)),
+          linear-gradient(60deg, rgba(255, 255, 255, 0.04) 25%, transparent 25.5%, transparent 75%, rgba(255, 255, 255, 0.04) 75%, rgba(255, 255, 255, 0.04));
+        background-position: 0 0, 0 0, 82px 143px, 82px 143px, 0 0, 82px 143px;
+        background-size: 164px 286px;
+        font-family: Impact, Haettenschweiler, "Arial Narrow Bold", Arial, sans-serif;
         text-transform: uppercase;
       }
 
-      .site-header {
+      body::before {
+        content: "";
         position: fixed;
-        z-index: 10;
-        top: 0;
-        left: 0;
-        right: 0;
+        inset: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 50% 40%, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.55) 64%),
+          linear-gradient(90deg, rgba(0, 0, 0, 0.22), transparent 22%, transparent 78%, rgba(0, 0, 0, 0.22));
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .old-shop-header {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        align-items: center;
+        gap: 30px;
+        padding: 52px 68px 22px;
+      }
+
+      .old-logo {
+        width: 160px;
+        max-width: 100%;
+        filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.55));
+      }
+
+      .old-nav {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        height: 74px;
-        padding: 0 30px;
-        background: rgba(0, 0, 0, 0.86);
-        border-bottom: 1px solid var(--line);
-        backdrop-filter: blur(14px);
+        justify-content: center;
+        gap: clamp(16px, 2vw, 34px);
+        flex-wrap: wrap;
       }
 
-      .brand img {
-        display: block;
-        width: 42px;
-        height: auto;
-      }
-
-      .nav-link {
-        color: #fff;
+      .old-nav a {
+        min-width: 172px;
+        padding: 18px 28px;
+        color: #111;
+        background: var(--cream);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 8px 14px 8px 14px;
+        transform: skewX(-12deg);
+        text-align: center;
         text-decoration: none;
-        font-size: 14px;
-        border-bottom: 3px solid var(--pink);
-        padding-bottom: 5px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        font-size: 18px;
+        box-shadow: 0 10px 34px rgba(0, 0, 0, 0.2);
+      }
+
+      .old-nav a span {
+        display: inline-block;
+        transform: skewX(12deg);
+      }
+
+      .old-nav a.is-active {
+        color: var(--red);
+        background: rgba(0, 0, 0, 0.32);
+        border-color: var(--cream);
       }
 
       main {
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        padding: 112px 22px 38px;
+        position: relative;
+        z-index: 1;
+        width: min(1320px, calc(100% - 44px));
+        margin: 42px auto 86px;
       }
 
-      .shop-card {
-        width: min(1180px, 100%);
-        min-height: 640px;
-        display: grid;
-        grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.8fr);
-        overflow: hidden;
-        border: 1px solid var(--line);
-        background:
-          linear-gradient(90deg, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.34)),
-          rgba(0, 0, 0, 0.78);
+      .page-title {
+        margin: 46px 0 72px;
+        color: var(--red);
+        text-align: center;
+        font-size: clamp(58px, 8vw, 108px);
+        line-height: 0.9;
+        letter-spacing: 1px;
       }
 
-      .shop-copy {
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 54px 80px;
+      }
+
+      .product-card {
+        min-height: 560px;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        align-items: center;
+        padding: 18px;
+        text-align: center;
+      }
+
+      .product-title {
+        margin: 0;
+        color: #fff;
+        font-size: clamp(30px, 3vw, 44px);
+        line-height: 0.95;
+        text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+      }
+
+      .price {
+        margin: 12px 0 0;
+        color: #fff;
+        font-size: clamp(26px, 2.6vw, 38px);
+        line-height: 1;
+      }
+
+      .product-media {
+        position: relative;
+        min-height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .product-media::before {
+        content: "";
+        position: absolute;
+        inset: 14% 8% 0;
+        border-radius: 24px;
+        background: rgba(0, 0, 0, 0.14);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+      }
+
+      .product-media img {
+        position: relative;
+        z-index: 1;
+        max-width: min(420px, 90%);
+        max-height: 420px;
+        object-fit: contain;
+        filter: drop-shadow(0 30px 34px rgba(0, 0, 0, 0.44));
+      }
+
+      .product-duo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(0px, 1vw, 12px);
+      }
+
+      .product-duo img {
+        max-width: min(230px, 48%);
+      }
+
+      .command {
+        justify-self: center;
+        min-width: 220px;
+        padding: 14px 28px;
+        color: var(--red);
+        background: rgba(17, 17, 17, 0.56);
+        border: 2px solid var(--red);
+        border-radius: 8px;
+        text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        font-size: 18px;
+        transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+      }
+
+      .command:hover {
+        color: #111;
+        background: var(--red);
+        transform: translateY(-2px);
+      }
+
+      .shop-footer {
         position: relative;
         z-index: 1;
         display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: clamp(32px, 5vw, 72px);
-      }
-
-      .eyebrow {
-        margin: 0 0 18px;
-        color: var(--pink);
-        font-size: clamp(13px, 1vw, 16px);
-      }
-
-      h1 {
-        max-width: 760px;
-        margin: 0;
-        font-size: clamp(58px, 11vw, 148px);
-        line-height: 0.86;
-      }
-
-      .intro {
-        max-width: 570px;
-        margin: 26px 0 34px;
-        color: var(--muted);
-        font-size: clamp(15px, 1.4vw, 22px);
-        line-height: 1.28;
-        text-transform: none;
-      }
-
-      .cta {
-        width: fit-content;
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        min-height: 48px;
-        padding: 0 18px;
-        color: #000;
-        background: #fff;
-        border-radius: 999px;
-        border: 1px solid #fff;
-        text-decoration: none;
-        font-size: 15px;
-      }
-
-      .cta span {
-        display: grid;
-        place-items: center;
-        width: 30px;
-        height: 30px;
-        border: 1px solid #111;
-        border-radius: 999px;
-      }
-
-      .shop-visual {
-        position: relative;
-        min-height: 640px;
-        display: grid;
-        place-items: center;
-        background:
-          radial-gradient(circle at 52% 52%, rgba(255, 63, 166, 0.32), transparent 22rem),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent);
-      }
-
-      .shop-visual::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-        background-size: 38px 38px;
-        opacity: 0.32;
-      }
-
-      .shop-visual img {
-        position: relative;
-        z-index: 1;
-        width: min(440px, 82%);
-        height: auto;
-        filter: drop-shadow(0 34px 70px rgba(0, 0, 0, 0.72));
-      }
-
-      footer {
-        position: fixed;
-        left: 30px;
-        bottom: 22px;
-        color: rgba(255, 255, 255, 0.48);
+        justify-content: space-between;
+        gap: 20px;
+        padding: 28px 68px;
+        border-top: 1px solid var(--line);
+        color: rgba(255, 255, 255, 0.6);
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 12px;
+        font-weight: 900;
       }
 
-      @media (max-width: 760px) {
-        .site-header {
-          height: 66px;
-          padding: 0 18px;
+      @media (max-width: 900px) {
+        .old-shop-header {
+          grid-template-columns: 1fr;
+          padding: 28px 22px 10px;
+          text-align: center;
         }
 
-        .brand img {
-          width: 38px;
+        .old-logo {
+          width: 110px;
+          margin: 0 auto;
+        }
+
+        .old-nav {
+          gap: 10px;
+        }
+
+        .old-nav a {
+          min-width: 132px;
+          padding: 13px 18px;
+          font-size: 14px;
         }
 
         main {
-          padding-top: 88px;
+          width: min(100% - 28px, 680px);
+          margin-top: 18px;
         }
 
-        .shop-card {
-          min-height: auto;
+        .page-title {
+          margin: 34px 0 36px;
+        }
+
+        .products-grid {
           grid-template-columns: 1fr;
+          gap: 36px;
         }
 
-        .shop-copy {
-          min-height: 360px;
-          padding: 28px;
+        .product-card {
+          min-height: auto;
+          padding: 10px 0 34px;
+          border-bottom: 1px solid var(--line);
         }
 
-        .shop-visual {
-          min-height: 360px;
-          order: -1;
+        .product-media {
+          min-height: 300px;
         }
 
-        .shop-visual img {
-          width: min(320px, 82%);
+        .product-media img {
+          max-height: 330px;
         }
 
-        footer {
-          position: static;
-          padding: 0 22px 22px;
+        .shop-footer {
+          padding: 24px 22px;
+          flex-direction: column;
+          text-align: center;
         }
       }
     </style>
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="../" aria-label="Retour au teaser Spektr">
-        <img src="../assets/spektr-crest.png" alt="Spektr" />
+    <header class="old-shop-header">
+      <a href="../" aria-label="Retour Spektr">
+        <img class="old-logo" src="../images/spektr_white.svg" alt="Spektr" />
       </a>
-      <a class="nav-link" href="https://wearespektr.com/shop">Shop</a>
+      <nav class="old-nav" aria-label="Navigation shop">
+        <a class="is-active" href="./"><span>Shop</span></a>
+      </nav>
     </header>
 
     <main>
-      <section class="shop-card" aria-label="Acces a l'ancien shop Spektr">
-        <div class="shop-copy">
-          <p class="eyebrow">Boutique officielle</p>
-          <h1>Acces shop</h1>
-          <p class="intro">Le nouveau site arrive bientot. En attendant, la boutique reste accessible sur l'ancien shop Spektr.</p>
-          <a class="cta" href="https://wearespektr.com/shop">
-            Ouvrir le shop
-            <span aria-hidden="true">-&gt;</span>
-          </a>
-        </div>
-        <div class="shop-visual" aria-hidden="true">
-          <img src="../assets/product-vdaty-back-transparent.png" alt="" />
-        </div>
+      <h1 class="page-title">Nos produits</h1>
+      <section class="products-grid" aria-label="Produits Spektr">
+        <article class="product-card">
+          <div>
+            <h2 class="product-title">Maillot Spektr 2025</h2>
+            <p class="price">53€</p>
+          </div>
+          <div class="product-media product-duo">
+            <img src="../assets/product-01-1.png" alt="Maillot Spektr 2025 face" />
+            <img src="../assets/product-01-2.jpg" alt="Maillot Spektr 2025 dos" />
+          </div>
+          <a class="command" href="https://www.kapoli.fr/boutiquedesclubs/Maillot-SPEKTR-p785531149">Commander</a>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <h2 class="product-title">T-shirt Silence</h2>
+            <p class="price">30€</p>
+          </div>
+          <div class="product-media">
+            <img src="../assets/product-02-1.png" alt="T-shirt Silence" />
+          </div>
+          <a class="command" href="https://www.kapoli.fr/boutiquedesclubs/T-SHIRT-SPEKTR-p785528424">Commander</a>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <h2 class="product-title">Maillot Spektr 2026</h2>
+            <p class="price">53€</p>
+          </div>
+          <div class="product-media">
+            <img src="../assets/product-03-1.png" alt="Maillot Spektr 2026" />
+          </div>
+          <a class="command" href="https://www.kapoli.fr/boutiquedesclubs/SPEKTR-c189557520">Commander</a>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <h2 class="product-title">Pro-kit Spektr</h2>
+            <p class="price">75€</p>
+          </div>
+          <div class="product-media">
+            <img src="../assets/product-veste-pluie-spektr.png" alt="Veste de pluie Spektr" />
+          </div>
+          <a class="command" href="https://www.kapoli.fr/boutiquedesclubs/Veste-de-pluie-SPEKTR-p839555055">Commander</a>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <h2 class="product-title">Manchettes Spektr</h2>
+            <p class="price">25€</p>
+          </div>
+          <div class="product-media">
+            <img src="../assets/product-manchettes-spektr.png" alt="Manchettes Spektr" />
+          </div>
+          <a class="command" href="https://www.kapoli.fr/boutiquedesclubs/Manchettes-SPKETR-p839549164">Commander</a>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <h2 class="product-title">T-shirt Big Money Talk</h2>
+            <p class="price">30€</p>
+          </div>
+          <div class="product-media">
+            <img src="../assets/product-04-1.png" alt="T-shirt Big Money Talk" />
+          </div>
+          <a class="command" href="https://www.kapoli.fr/boutiquedesclubs/T-SHIRT-SPEKTR-p785533087">Commander</a>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <h2 class="product-title">Hoodies Signature</h2>
+            <p class="price">70€</p>
+          </div>
+          <div class="product-media">
+            <img src="../assets/product-05-1.jpg" alt="Hoodies Signature" />
+          </div>
+          <a class="command" href="https://www.kapoli.fr/boutiquedesclubs/Hoodie-SPEKTR-p785531158">Commander</a>
+        </article>
+
+        <article class="product-card">
+          <div>
+            <h2 class="product-title">T-shirt Oversize Spektr</h2>
+            <p class="price">30€</p>
+          </div>
+          <div class="product-media">
+            <img src="../assets/product-06-1.png" alt="T-shirt Oversize Spektr" />
+          </div>
+          <a class="command" href="https://www.kapoli.fr/boutiquedesclubs/Maillot-SPEKTR-oversize-p801575561">Commander</a>
+        </article>
       </section>
     </main>
 
-    <footer>2026 SPEKTR</footer>
+    <footer class="shop-footer">
+      <span>2026 SPEKTR</span>
+      <span>Boutique archivee - commandes via Kapoli</span>
+    </footer>
   </body>
 </html>
