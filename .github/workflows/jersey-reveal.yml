@@ -1,0 +1,93 @@
+name: Jersey reveal
+
+on:
+  schedule:
+    - cron: "0 16 23 10 *"
+  workflow_dispatch:
+    inputs:
+      force_reveal:
+        description: "Reveal even before 2026-10-23 18:00 Paris"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  publish-jersey:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v4
+
+      - name: Check reveal date
+        id: reveal_gate
+        shell: bash
+        env:
+          FORCE_REVEAL: ${{ inputs.force_reveal || 'false' }}
+        run: |
+          now="$(date -u +%s)"
+          reveal="$(date -u -d '2026-10-23 16:00:00 UTC' +%s)"
+          if [ "$now" -lt "$reveal" ] && [ "$FORCE_REVEAL" != "true" ]; then
+            echo "Reveal date not reached yet."
+            echo "should_reveal=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "should_reveal=true" >> "$GITHUB_OUTPUT"
+
+      - name: Decrypt reveal assets
+        if: steps.reveal_gate.outputs.should_reveal == 'true'
+        shell: pwsh
+        env:
+          JERSEY_REVEAL_KEY: ${{ secrets.JERSEY_REVEAL_KEY }}
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:JERSEY_REVEAL_KEY)) {
+            throw "Missing GitHub secret: JERSEY_REVEAL_KEY"
+          }
+
+          $encryptedPath = ".reveal/jersey-reveal-assets.bin"
+          $zipPath = "$env:RUNNER_TEMP/jersey-reveal-assets.zip"
+          $extractPath = "$env:RUNNER_TEMP/jersey-reveal-assets"
+
+          $payload = [IO.File]::ReadAllBytes($encryptedPath)
+          $salt = $payload[0..15]
+          $iv = $payload[16..31]
+          $cipher = $payload[32..($payload.Length - 1)]
+
+          $derive = [Security.Cryptography.Rfc2898DeriveBytes]::new(
+            $env:JERSEY_REVEAL_KEY,
+            $salt,
+            200000,
+            [Security.Cryptography.HashAlgorithmName]::SHA256
+          )
+          $key = $derive.GetBytes(32)
+
+          $aes = [Security.Cryptography.Aes]::Create()
+          $aes.KeySize = 256
+          $aes.Mode = [Security.Cryptography.CipherMode]::CBC
+          $aes.Padding = [Security.Cryptography.PaddingMode]::PKCS7
+          $aes.Key = $key
+          $aes.IV = $iv
+
+          $decryptor = $aes.CreateDecryptor()
+          $plain = $decryptor.TransformFinalBlock($cipher, 0, $cipher.Length)
+          [IO.File]::WriteAllBytes($zipPath, $plain)
+
+          Expand-Archive -LiteralPath $zipPath -DestinationPath $extractPath -Force
+          Copy-Item -LiteralPath "$extractPath/assets/product-mw4-teaser-back-user.png" -Destination "assets/product-mw4-teaser-back-user.png" -Force
+          Copy-Item -LiteralPath "$extractPath/assets/product-mw4-teaser-duo-user.png" -Destination "assets/product-mw4-teaser-duo-user.png" -Force
+
+      - name: Commit reveal
+        if: steps.reveal_gate.outputs.should_reveal == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/product-mw4-teaser-back-user.png assets/product-mw4-teaser-duo-user.png
+          if git diff --cached --quiet; then
+            echo "Reveal assets already published."
+            exit 0
+          fi
+          git commit -m "Reveal MW4 jersey"
+          git push
