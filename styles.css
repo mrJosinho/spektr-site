@@ -1302,6 +1302,12 @@ img {
   filter: drop-shadow(0 30px 42px rgba(0,0,0,.18));
 }
 
+.orchid-shop-hero > .jersey-png-teaser {
+  width: min(500px, 100%);
+  border: 1px solid rgba(0,0,0,.05);
+  filter: drop-shadow(0 26px 36px rgba(0,0,0,.12));
+}
+
 .reveal-product-image,
 .reveal-product-preview img,
 .reveal-event-thumb {
@@ -1441,6 +1447,12 @@ img {
   aspect-ratio: auto;
   object-fit: contain;
   background: transparent;
+}
+
+.orchid-product-card .product-reveal-preview-image {
+  aspect-ratio: 591 / 277;
+  padding: 0;
+  object-fit: cover;
 }
 
 .orchid-product-card h3 {
