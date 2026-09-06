@@ -2357,8 +2357,7 @@ img {
 }
 
 .player-klarika-card > img,
-.player-agora-card > img,
-.player-naaqz-card > img {
+.player-agora-card > img {
   object-position: center 28%;
 }
 
@@ -2409,9 +2408,7 @@ img {
 }
 
 .player-agora-card.tile-hero > img,
-.player-agora-card.tile-wide > img,
-.player-naaqz-card.tile-hero > img,
-.player-naaqz-card.tile-wide > img {
+.player-agora-card.tile-wide > img {
   object-position: center 36%;
 }
 
