@@ -1526,7 +1526,8 @@ img {
 }
 
 .category-jersey {
-  background-image: url("assets/product-03-3.jpg");
+  background-image: url("assets/player-lodou.png");
+  background-position: center 18%;
 }
 
 .category-lifestyle {
