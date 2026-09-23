@@ -3266,3 +3266,17 @@ img {
   }
 }
 
+
+.player-teaser > img {
+  filter: grayscale(1) blur(14px) brightness(.28);
+  transform: scale(1.08);
+}
+
+.player-teaser:hover > img {
+  filter: grayscale(1) blur(14px) brightness(.32);
+  transform: scale(1.08);
+}
+
+.player-teaser .player-content h2 {
+  font-size: clamp(30px, 4vw, 58px);
+}
