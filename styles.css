@@ -3591,7 +3591,8 @@ img {
 @media(max-width:1100px){.jersey-campaign-hero{min-height:680px}.jersey-campaign-copy{width:290px}.campaign-player-man{left:18%;width:36%}.campaign-player-woman{right:-7%;width:40%}.campaign-shirt-back{left:52%;width:27vw}.campaign-shirt-front{left:65%;width:32vw}}
 @media(max-width:760px){.jersey-campaign-hero{min-height:720px;background:linear-gradient(150deg,#17070e 0%,#65314c 50%,#e990b7 100%)}.jersey-campaign-brand{top:22px;left:20px;transform:scale(.84);transform-origin:left top}.jersey-campaign-hero::before{width:120%;height:35%;right:-45%;top:8%}.jersey-campaign-hero::after{width:140%;height:32%;right:-28%;bottom:-10%}.campaign-player{height:58%;opacity:.58}.campaign-player-man{left:-13%;width:63%}.campaign-player-woman{right:-12%;width:65%}.campaign-shirt-back{left:43%;bottom:32%;width:48vw;height:44%;opacity:.82}.campaign-shirt-front{left:65%;bottom:28%;width:57vw;height:52%}.jersey-campaign-copy{left:20px;right:20px;bottom:40px;width:auto}.jersey-campaign-copy h1{font-size:clamp(39px,12vw,54px);max-width:360px}.jersey-campaign-copy p:not(.eyebrow){display:none}.jersey-campaign-copy a{margin-top:18px}.jersey-campaign-dots{display:none}}
 /* Campaign layout: centered title and deeper stage */
-$1880px}
+@media (min-width: 761px){
+  .jersey-campaign-hero{min-height:880px}
   .jersey-campaign-copy{top:34px;bottom:auto;left:50%;width:min(760px,58vw);transform:translateX(-50%);text-align:center}
   .jersey-campaign-copy .eyebrow{margin-bottom:8px}
   .jersey-campaign-copy h1{max-width:none;font-size:clamp(42px,4.2vw,72px);line-height:.94}
@@ -3604,7 +3605,8 @@ $1880px}
   .campaign-shirt-front{left:60%;bottom:0;width:min(27vw,420px);height:66%}
   .jersey-campaign-dots{left:56%}
 }
-$1820px}
+@media (min-width:761px) and (max-width:1100px){
+  .jersey-campaign-hero{min-height:820px}
   .jersey-campaign-copy{width:68vw}
   .campaign-player{height:72%}
   .campaign-player-man{left:3%;width:40%}
