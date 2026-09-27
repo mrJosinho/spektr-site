@@ -3651,3 +3651,7 @@ html{scroll-behavior:smooth}
 .jersey-scroll-cue span{display:block;font-size:28px;line-height:1;animation:jersey-arrow-slide 1.35s ease-in-out infinite}
 @keyframes jersey-arrow-slide{0%,100%{transform:translateY(-4px);opacity:.55}50%{transform:translateY(5px);opacity:1}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.jersey-scroll-cue span{animation:none}}
+/* Keep the 2026 jersey secondary to the 2027 launch */
+.orchid-product-grid>.orchid-product-card:nth-child(2)>a>img{padding:72px;transform:scale(.88)}
+.orchid-product-grid>.orchid-product-card:nth-child(2) h3{font-size:clamp(17px,1.75vw,23px)}
+@media(max-width:760px){.orchid-product-grid>.orchid-product-card:nth-child(2)>a>img{padding:50px;transform:scale(.9)}}
