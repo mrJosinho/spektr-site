@@ -401,3 +401,29 @@ document.querySelectorAll("[data-countdown]").forEach((countdown) => {
   tick();
   setInterval(tick, 1000);
 });
+
+// Controlled animated scroll from the jersey campaign to the product grid.
+const jerseyScrollCue = document.querySelector(".jersey-scroll-cue");
+const jerseyProducts = document.querySelector("#nouveaux-produits");
+if (jerseyScrollCue && jerseyProducts) {
+  jerseyScrollCue.addEventListener("click", (event) => {
+    event.preventDefault();
+    const start = window.scrollY;
+    const header = document.querySelector(".site-header");
+    const headerOffset = header ? header.getBoundingClientRect().height : 0;
+    const destination = Math.max(0, jerseyProducts.getBoundingClientRect().top + start - headerOffset);
+    const distance = destination - start;
+    const duration = 1050;
+    const startedAt = performance.now();
+    const easeInOutCubic = (progress) => progress < 0.5
+      ? 4 * progress * progress * progress
+      : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+    const animateScroll = (now) => {
+      const progress = Math.min((now - startedAt) / duration, 1);
+      window.scrollTo(0, start + distance * easeInOutCubic(progress));
+      if (progress < 1) requestAnimationFrame(animateScroll);
+    };
+    requestAnimationFrame(animateScroll);
+  });
+}
