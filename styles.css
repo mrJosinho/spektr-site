@@ -3640,10 +3640,3 @@ img {
   .jersey-campaign-copy{z-index:12}
   .jersey-campaign-copy p:not(.eyebrow){font-size:16px;font-weight:700}
 }
-/* Full viewport campaign stage */
-@media(min-width:761px){
-  .jersey-campaign-hero{min-height:max(900px,calc(100svh - 68px))}
-}
-@media(max-width:760px){
-  .jersey-campaign-hero{min-height:calc(100svh - 64px)}
-}
