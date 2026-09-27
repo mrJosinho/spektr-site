@@ -3632,3 +3632,11 @@ img {
 .jersey-campaign-dots span:first-child{background:#1b0710}
 @media(max-width:760px){.jersey-campaign-hero{background:linear-gradient(150deg,#efaccb 0%,#e990b7 58%,#cc6a97 100%)}.jersey-campaign-hero::before{width:130%;height:25%;left:-35%;right:auto;top:26%}.jersey-campaign-hero::after{width:135%;height:24%;right:-35%;bottom:3%}}
 .jersey-campaign-copy p:not(.eyebrow){color:#260b17;text-shadow:none}.jersey-campaign-copy a{color:#1b0710;text-shadow:none}
+
+/* Keep campaign copy clear of graphic strokes */
+@media(min-width:761px){
+  .jersey-campaign-hero::before{top:54%;height:16%;left:-13%;width:70%;transform:rotate(-7deg) skewX(-18deg)}
+  .jersey-campaign-hero::after{right:-14%;bottom:1%;height:19%;width:70%}
+  .jersey-campaign-copy{z-index:12}
+  .jersey-campaign-copy p:not(.eyebrow){font-size:16px;font-weight:700}
+}
