@@ -3655,3 +3655,11 @@ html{scroll-behavior:smooth}
 .orchid-product-grid>.orchid-product-card:nth-child(2)>a>img{padding:145px;transform:none}
 .orchid-product-grid>.orchid-product-card:nth-child(2) h3{font-size:clamp(17px,1.75vw,23px)}
 @media(max-width:760px){.orchid-product-grid>.orchid-product-card:nth-child(2)>a>img{padding:100px;transform:none}}
+/* Feature the 2027 launch on its own row */
+.orchid-product-card.featured-launch{grid-column:1/-1}
+.orchid-product-card.featured-launch .product-duo{aspect-ratio:16/6;min-height:430px}
+.orchid-product-card.featured-launch .product-duo img{top:2%;width:42%;height:96%}
+.orchid-product-card.featured-launch .product-duo img:first-child{left:10%}
+.orchid-product-card.featured-launch .product-duo img:last-child{right:10%}
+.orchid-product-card.featured-launch h3{font-size:clamp(25px,3vw,38px);padding-block:24px}
+@media(max-width:760px){.orchid-product-card.featured-launch{grid-column:auto}.orchid-product-card.featured-launch .product-duo{aspect-ratio:1/1;min-height:0}.orchid-product-card.featured-launch .product-duo img{top:5%;width:64%;height:90%}.orchid-product-card.featured-launch .product-duo img:first-child{left:-1%}.orchid-product-card.featured-launch .product-duo img:last-child{right:-1%}}
