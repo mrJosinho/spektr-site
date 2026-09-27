@@ -3621,3 +3621,14 @@ img {
   .campaign-shirt-back{bottom:7%;height:43%}
   .campaign-shirt-front{bottom:3%;height:50%}
 }
+/* Restore graphic blossom campaign background */
+.jersey-campaign-hero{background:radial-gradient(circle at 48% 18%,rgba(255,255,255,.24),transparent 28%),linear-gradient(118deg,#f2b1cf 0%,#e990b7 55%,#cf6e9a 100%)}
+.jersey-campaign-hero::before,.jersey-campaign-hero::after{background:repeating-linear-gradient(168deg,#090709 0 10px,transparent 10px 18px,#090709 18px 24px,transparent 24px 34px);opacity:.82;filter:none}
+.jersey-campaign-hero::before{width:72%;height:22%;left:-9%;right:auto;top:38%;border-radius:50% 12% 44% 8%;clip-path:none;transform:rotate(-8deg) skewX(-18deg)}
+.jersey-campaign-hero::after{width:72%;height:26%;right:-12%;bottom:2%;border-radius:10% 55% 9% 40%;clip-path:none;transform:rotate(-13deg) skewX(-18deg)}
+.jersey-campaign-copy{text-shadow:0 2px 16px rgba(53,9,30,.55)}
+.jersey-campaign-copy .eyebrow{color:#1b0710}
+.jersey-campaign-copy a{border-bottom-color:#1b0710}
+.jersey-campaign-dots span:first-child{background:#1b0710}
+@media(max-width:760px){.jersey-campaign-hero{background:linear-gradient(150deg,#efaccb 0%,#e990b7 58%,#cc6a97 100%)}.jersey-campaign-hero::before{width:130%;height:25%;left:-35%;right:auto;top:26%}.jersey-campaign-hero::after{width:135%;height:24%;right:-35%;bottom:3%}}
+.jersey-campaign-copy p:not(.eyebrow){color:#260b17;text-shadow:none}.jersey-campaign-copy a{color:#1b0710;text-shadow:none}
