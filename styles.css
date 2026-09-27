@@ -3471,3 +3471,106 @@ img {
     width: 64%;
   }
 }
+/* PRODUCT-FIRST JERSEY HERO */
+.jersey-showcase {
+  min-height: 680px;
+  max-height: 760px;
+  padding-top: clamp(40px, 5vw, 64px);
+  padding-bottom: clamp(40px, 5vw, 64px);
+  grid-template-columns: minmax(340px, .82fr) minmax(520px, 1.18fr);
+  gap: clamp(20px, 4vw, 64px);
+}
+
+.jersey-showcase::before {
+  right: 1vw;
+  bottom: -3vw;
+  font-size: clamp(150px, 24vw, 380px);
+  color: rgba(255,79,160,.045);
+}
+
+.jersey-showcase .orchid-shop-copy {
+  width: min(520px, 100%);
+}
+
+.jersey-showcase .orchid-shop-copy h1 {
+  max-width: 520px;
+  font-size: clamp(52px, 6.2vw, 88px);
+  line-height: .9;
+  letter-spacing: -.045em;
+}
+
+.jersey-showcase-lead {
+  max-width: 500px;
+  margin-top: 22px;
+  font-size: clamp(16px, 1.25vw, 19px);
+}
+
+.jersey-showcase-details { margin-top: 20px; }
+.jersey-shop-button { margin-top: 25px; }
+
+.jersey-player-stage {
+  align-self: center;
+  width: min(820px, 100%);
+  min-height: 610px;
+  height: 610px;
+}
+
+.jersey-player-stage::before {
+  inset: 12% 12% 4%;
+  background: radial-gradient(circle, rgba(255,79,160,.4), rgba(255,79,160,.1) 47%, transparent 72%);
+}
+
+.jersey-player {
+  bottom: -7%;
+  height: 91%;
+  max-height: 590px;
+  opacity: .72;
+  filter: saturate(.82) drop-shadow(0 24px 32px rgba(0,0,0,.2));
+}
+
+.jersey-player-man { z-index: 1; left: -8%; width: 47%; }
+.jersey-player-woman { z-index: 1; right: -7%; width: 45%; }
+
+.jersey-product {
+  position: absolute;
+  object-fit: contain;
+  filter: drop-shadow(0 26px 28px rgba(0,0,0,.24));
+}
+
+.jersey-product-front {
+  z-index: 4;
+  left: 35%;
+  bottom: 1%;
+  width: 39%;
+  height: 84%;
+}
+
+.jersey-product-back {
+  z-index: 3;
+  left: 17%;
+  bottom: 8%;
+  width: 31%;
+  height: 68%;
+  opacity: .9;
+  transform: rotate(-4deg);
+}
+
+@media (max-width: 960px) {
+  .jersey-showcase { max-height: none; grid-template-columns: 1fr; padding-top: 54px; }
+  .jersey-showcase .orchid-shop-copy { justify-self: center; text-align: center; }
+  .jersey-showcase .orchid-shop-copy h1,
+  .jersey-showcase-lead { margin-left: auto; margin-right: auto; }
+  .jersey-showcase-details { justify-content: center; }
+  .jersey-player-stage { min-height: 570px; height: 570px; }
+}
+
+@media (max-width: 560px) {
+  .jersey-showcase { padding: 40px 16px 18px; }
+  .jersey-showcase .orchid-shop-copy h1 { font-size: clamp(45px, 15vw, 66px); }
+  .jersey-player-stage { min-height: 440px; height: 440px; }
+  .jersey-player { height: 82%; bottom: -5%; }
+  .jersey-player-man { left: -16%; width: 55%; }
+  .jersey-player-woman { right: -15%; width: 53%; }
+  .jersey-product-front { left: 34%; width: 42%; height: 80%; }
+  .jersey-product-back { left: 12%; width: 35%; height: 62%; }
+}
