@@ -3640,3 +3640,8 @@ img {
   .jersey-campaign-copy{z-index:12}
   .jersey-campaign-copy p:not(.eyebrow){font-size:16px;font-weight:700}
 }
+/* Make the new jersey the dominant product card */
+.orchid-product-card .product-duo{position:relative;display:block;aspect-ratio:1/1;padding:10px;overflow:hidden}
+.orchid-product-card .product-duo img{position:absolute;top:4%;width:62%;height:92%;object-fit:contain;filter:drop-shadow(0 12px 16px rgba(0,0,0,.16))}
+.orchid-product-card .product-duo img:first-child{left:0;z-index:2}
+.orchid-product-card .product-duo img:last-child{right:0;z-index:1}
