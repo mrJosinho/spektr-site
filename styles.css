@@ -3701,3 +3701,12 @@ html{scroll-behavior:smooth}
 }
 .jersey-campaign-copy h1 + p:not(.eyebrow){margin-top:44px}
 @media(max-width:760px){.jersey-campaign-copy h1 .campaign-korean-mark{bottom:-.62em;font-size:.42em}}
+@media(max-width:760px){
+  .jersey-campaign-copy .jersey-scroll-cue{
+    position:relative;
+    z-index:2;
+    background:#f2b1cf;
+    border-width:2px;
+    box-shadow:0 5px 14px rgba(55,4,28,.24);
+  }
+}
