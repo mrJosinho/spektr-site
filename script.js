@@ -427,3 +427,15 @@ if (jerseyScrollCue && jerseyProducts) {
     requestAnimationFrame(animateScroll);
   });
 }
+// Track clicks on the featured 2027 jersey card in Google Analytics.
+const trackedJerseyCard = document.querySelector("[data-track-jersey-2027]");
+if (trackedJerseyCard) {
+  trackedJerseyCard.addEventListener("click", () => {
+    if (typeof window.gtag !== "function") return;
+    window.gtag("event", "clic_maillot_2027", {
+      item_name: "Maillot 2027 MW4",
+      link_url: trackedJerseyCard.href,
+      transport_type: "beacon"
+    });
+  });
+}
