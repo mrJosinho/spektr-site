@@ -3663,3 +3663,25 @@ html{scroll-behavior:smooth}
 .orchid-product-card.featured-launch .product-duo img:last-child{right:10%}
 .orchid-product-card.featured-launch h3{font-size:clamp(25px,3vw,38px);padding-block:24px}
 @media(max-width:760px){.orchid-product-card.featured-launch{grid-column:auto}.orchid-product-card.featured-launch .product-duo{aspect-ratio:1/1;min-height:0}.orchid-product-card.featured-launch .product-duo img{top:5%;width:64%;height:90%}.orchid-product-card.featured-launch .product-duo img:first-child{left:-1%}.orchid-product-card.featured-launch .product-duo img:last-child{right:-1%}}
+/* Poster-style dimensional title for the 2027 jersey campaign. */
+.jersey-campaign-copy h1{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  color:#fff;
+  font-weight:1000;
+  letter-spacing:-.065em;
+  line-height:.82;
+  -webkit-text-stroke:2px #ff2995;
+  paint-order:stroke fill;
+  text-shadow:
+    0 2px 0 #ff2995,
+    0 5px 0 #db176f,
+    0 8px 0 #78113f,
+    0 13px 18px rgba(55,4,28,.48);
+}
+.jersey-campaign-copy h1 span{display:block;white-space:nowrap}
+@media(min-width:1101px){.jersey-campaign-copy h1{font-size:clamp(48px,4.6vw,78px)}}
+@media(max-width:760px){
+  .jersey-campaign-copy h1{font-size:clamp(37px,11.5vw,52px);-webkit-text-stroke:1.5px #ff2995;text-shadow:0 2px 0 #ff2995,0 4px 0 #cf176a,0 7px 0 #70103b,0 10px 14px rgba(55,4,28,.44)}
+}
