@@ -3685,3 +3685,19 @@ html{scroll-behavior:smooth}
 @media(max-width:760px){
   .jersey-campaign-copy h1{font-size:clamp(37px,11.5vw,52px);-webkit-text-stroke:1.5px #ff2995;text-shadow:0 2px 0 #ff2995,0 4px 0 #cf176a,0 7px 0 #70103b,0 10px 14px rgba(55,4,28,.44)}
 }
+.jersey-campaign-copy h1{position:relative}
+.jersey-campaign-copy h1 .campaign-korean-mark{
+  position:absolute;
+  top:-.08em;
+  right:-1.7em;
+  display:block;
+  writing-mode:vertical-rl;
+  text-orientation:upright;
+  white-space:nowrap;
+  font-size:.25em;
+  line-height:1;
+  letter-spacing:-.12em;
+  -webkit-text-stroke:1px #ff2995;
+  text-shadow:1px 2px 0 #db176f,2px 4px 0 #78113f,3px 7px 12px rgba(55,4,28,.42);
+}
+@media(max-width:760px){.jersey-campaign-copy h1 .campaign-korean-mark{top:-.1em;right:-1.25em;font-size:.27em}}
